@@ -1,0 +1,30 @@
+
+
+.questions-list {
+  margin-left: 0;
+}
+
+.questions-list__item {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.scrollView {
+    flex: 1;
+}
+
+.infiniteTimeline {
+    width: 2.5;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 32;
+    left: 30;
+}
+
+.questionHistoryContainer {
+    position: relative;
+}
+
+.isInProgressSubmitChoice {
+    margin-top: 90;
+  }

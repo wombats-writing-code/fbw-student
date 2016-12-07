@@ -1,0 +1,156 @@
+// =================
+//Colors
+
+
+$background: #fefefe;
+$text: #4b507a;
+
+$green: #96CEB4;
+// $yellow: #fbca67;
+// $orange: #ff8a30;
+// $red: #f45e61;
+// $purple: #6477b9;
+// $blue: #0eb7da;
+
+// === fade in and out animation
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
+// ==== draw border around box animation
+.draw-enter {
+  color: $green;
+
+  position: relative;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &::before,
+  &::after {
+    border: 2px solid transparent; // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+    width: 0;
+    height: 0;
+  }
+
+  // This covers the top & right borders (expands right, then down)
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  // And this the bottom & left borders (expands left, then up)
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.draw-enter.draw-enter-active {
+  color: #333;
+
+  &::before,
+  &::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &::before {
+    border-top-color: $green; // Make borders visible
+    border-right-color: $green;
+    transition:
+      width 1s ease-out, // Width expands first
+      height 1s ease-out 1s; // And then height
+  }
+
+  &::after {
+    border-bottom-color: $green; // Make borders visible
+    border-left-color: $green;
+    transition:
+      border-color 0s ease-out 2s, // Wait for ::before to finish before showing border
+      width 1s ease-out 2s, // And then exanding width
+      height 1s ease-out 3s; // And finally height
+  }
+}
+
+// ======= animated components
+
+.fade-in-out {
+  opacity: 1;
+  animation: fade 1.75s infinite ease;
+}
+
+// Basic styles
+// .box {
+//   background: none;
+//   border: 0;
+//   box-sizing: border-box;
+//   box-shadow: inset 0 0 0 2px $red; // Using inset box-shadow instead of border for sizing simplicity
+//
+//   // Required, since we're setting absolute on pseudo-elements
+//   position: relative;
+//   vertical-align: middle;
+//
+//   &::before,
+//   &::after {
+//     box-sizing: border-box;
+//     content: '';
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
+//
+// .draw-upon-hover {
+//   transition: color 1s;
+//   &::before,
+//   &::after {
+//     border: 2px solid transparent; // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+//     width: 0;
+//     height: 0;
+//   }
+//
+//   // This covers the top & right borders (expands right, then down)
+//   &::before {
+//     top: 0;
+//     left: 0;
+//   }
+//
+//   // And this the bottom & left borders (expands left, then up)
+//   &::after {
+//     bottom: 0;
+//     right: 0;
+//   }
+//
+//   // Hover styles
+//   &:hover::before,
+//   &:hover::after {
+//     width: 100%;
+//     height: 100%;
+//   }
+//
+//   &:hover::before {
+//     border-top-color: $green; // Make borders visible
+//     border-right-color: $green;
+//     transition:
+//       width 1s ease-out, // Width expands first
+//       height 1s ease-out 1s; // And then height
+//   }
+//
+//   &:hover::after {
+//     border-bottom-color: $green; // Make borders visible
+//     border-left-color: $green;
+//     transition:
+//       border-color 0s ease-out 2s, // Wait for ::before to finish before showing border
+//       width 1s ease-out 2s, // And then exanding width
+//       height 1s ease-out 3s; // And finally height
+//   }
+// }

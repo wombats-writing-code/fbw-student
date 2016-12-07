@@ -1,0 +1,34 @@
+
+.mission-type-icon {
+  width: 45px;
+  height: 45px;
+  margin-right: 1.6rem;
+}
+
+.missions-list__item {
+  padding-top: .75rem;
+}
+
+.missions-list__item button {
+  padding-bottom: 0;
+}
+
+.missions-list__item:hover {
+  background: #fafafa;
+}
+
+.missions-list__item__body {
+  text-align: left;
+  flex: 3;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.mission-name {
+  color: #555;
+}
+
+.mission-deadline {
+  font-weight: 600;
+  font-size: .875rem;
+}

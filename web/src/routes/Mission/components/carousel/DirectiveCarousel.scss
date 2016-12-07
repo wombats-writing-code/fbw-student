@@ -1,0 +1,78 @@
+
+@import '../../../../styles/base';
+
+
+.carousel-container {
+  padding: .75rem 0 .0 1rem;
+  background: #fafafa;
+  border-bottom: 1px solid #ccc;
+}
+
+.carousel {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 0;
+  overflow-x: auto;
+}
+
+.carousel-label {
+  width: 6rem;
+  color: #555;
+  font-size: .875rem;
+  text-align: left;
+}
+
+.carousel-thumb {
+  flex: none;
+  font-size: .875rem;
+  padding-bottom: calc(.75rem - 5px);
+  margin-bottom: -1px;
+  border-bottom: 4px solid transparent;
+}
+
+.carousel-thumb__icon {
+  font-size: 1.5rem;
+  margin-right: .5em;
+  margin-bottom: 0;
+}
+
+.carousel-thumb:hover {
+  opacity: .8;
+}
+
+.carousel-thumb__text {
+  color: #5f5f5f;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.carousel-thumb--directive {
+  width: 12rem;
+}
+
+.carousel-thumb.is-active {
+  cursor: default;
+  border-bottom: 4px solid $app-blue-dark;
+}
+
+.carousel-thumb.is-active:hover {
+  opacity: 1;
+}
+
+.carousel-thumb.is-active .carousel-thumb__text {
+  color: $app-blue-dark;
+}
+
+// ===== old
+//
+// .carousel-thumb:hover {
+//   background: #fff;
+// }
+//
+
+
+// ===========
+.directive-carousel {
+  border-top: 1px solid #ccc;
+}

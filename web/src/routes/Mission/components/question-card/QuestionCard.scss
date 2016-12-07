@@ -1,0 +1,32 @@
+
+.question-card {
+}
+
+.question-card__body {
+  text-align: left;
+  margin-left: calc(1rem + 20px);
+  margin-bottom: .5rem;
+}
+
+.submit-button {
+  background: #2C3E50;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+  padding-top: .75em;
+  padding-bottom: .75em;
+  width: calc(100% - 1rem - 20px);
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.submit-button.is-disabled, .submit-button.is-disabled:hover  {
+  background: #888;
+  opacity: .8;
+  cursor: default;
+}
+
+.submit-button:hover {
+  background: #3c4e60;
+}

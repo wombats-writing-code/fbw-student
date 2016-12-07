@@ -1,0 +1,57 @@
+@import 'base';
+@import '~normalize.css/normalize';
+
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container.flex-column {
+  flex-direction: column;
+}
+
+.flex-container.align-center {
+  align-items: center;
+}
+
+.flex-container.align-top {
+  align-items: flex-start;;
+}
+
+.flex-container.justify-center {
+  justify-content: center;
+}
+
+.flex-container.space-between {
+  justify-content: space-between;
+}
+
+
+.bold {
+  font-weight: 600;
+}

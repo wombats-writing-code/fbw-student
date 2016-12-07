@@ -1,0 +1,29 @@
+
+@import '../../../styles/base';
+
+.duck {
+  display: block;
+  width: 120px;
+  margin: 1.5rem auto;
+}
+
+.home {
+  text-align: left;
+}
+
+.home__greeting {
+  // font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.name {
+  font-weight: 300;
+}
+
+.next-action-prompt {
+  margin-bottom: 3rem;
+}
+
+.navigation-link {
+  color: $app-blue-2;
+}
