@@ -27,7 +27,7 @@ class AppContainer extends Component {
       console.log('state in AppContainer', state);
       console.log('resolved promise username in AppContainer', username);
 
-      if (!username) {
+      if (!username && this.props.location.pathname !== "/d2l-callback") {
         browserHistory.push('/login')
       } else if (!state.subject.enrolledBankIds) {
         browserHistory.push('/subjects')
