@@ -16,7 +16,7 @@ class TargetCarousel extends Component {
   componentDidUpdate() {
     // let's shift focus to here, so keyboard users
     // know that they should navigate within targets
-    if (this.props.targets.length > 0 && !this.props.currentTarget) {
+    if (this.props.targets && this.props.targets.length > 0 && !this.props.currentTarget) {
       _.compact(this.buttonRefs)[0].focus()
     }
   }
