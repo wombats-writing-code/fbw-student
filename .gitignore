@@ -7,6 +7,8 @@ dist
 coverage
 
 .idea/
+StudentApp.xcscheme
+UserInterfaceState.xcuserstate
 
 *.credentials.js
 s3_website*.yml
