@@ -10,13 +10,15 @@ import './DirectiveCarousel.scss'
 class DirectiveCarousel extends Component {
 
   _renderThumb = (directive, idx) => {
-    let outcomeTargets = _.filter(this.props.targets, (t) => t.learningObjectiveIds.indexOf(directive.learningObjectiveId) > -1);
+    // TODO: cjshaw needs to figure out another way to implement this,
+    //   if we go forward with only getting sections without questions.
+    // let outcomeTargets = _.filter(this.props.targets, (t) => t.learningObjectiveIds.indexOf(directive.learningObjectiveId) > -1);
     let outcome = _.find(this.props.outcomes, {id: directive.learningObjectiveId})
-
+    //
     let image;
-    if (hasAchievedDirective(outcomeTargets)) {
-      image = <p className="carousel-thumb__icon">&#x02713;</p>
-    }
+    // if (hasAchievedDirective(outcomeTargets)) {
+    //   image = <p className="carousel-thumb__icon">&#x02713;</p>
+    // }
 
     let displayName = outcome ? outcome.displayName.text : 'Error. Somehow this outcome is undefined';
 
@@ -24,7 +26,11 @@ class DirectiveCarousel extends Component {
     let thumb = (
       <div key={idx}
           className={isActive ? "carousel-thumb is-active carousel-thumb--directive" : "carousel-thumb carousel-thumb--directive"}>
-        <button className="carousel-thumb__button" onClick={() => this.props.onSelectDirective(idx)}
+        <button className="carousel-thumb__button" onClick={() => this.props.onSelectDirective({
+          directiveIndex: idx,
+          mission: this.props.mission,
+          sectionId: directive.id,
+          username: this.props.username})}
                 aria-label={`Learning Outcome: ${displayName}`}>
           <div className="flex-container align-center space-between">
             {image}

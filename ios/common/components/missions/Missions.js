@@ -6,6 +6,7 @@ import {
   Text, TouchableHighlight, View, Image
 } from 'react-native'
 import { Actions } from "react-native-router-flux";
+import _ from 'lodash'
 
 const Icon = require('react-native-vector-icons/FontAwesome')
 
@@ -92,13 +93,20 @@ class Missions extends Component {
       </View>)
     }
 
+    // we need to filter out "future" missions
+    let filteredMissions = _.filter(this.props.missions, (mission) => {
+      return checkMissionStatus(mission) !== "future"
+    })
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    let currentMissions = this.props.missions.length > 0 ?
+    let currentMissions = filteredMissions.length > 0 ?
                 ( <ListView
-                      dataSource={ds.cloneWithRows(this.props.missions)}
+                      dataSource={ds.cloneWithRows(filteredMissions)}
                       renderRow={this.renderRow}
                       style={styles.missionList}>
-                  </ListView> ) : null;
+                  </ListView> ) : (
+                  <View style={styles.notification}>
+                    <Text style={styles.notificationText}>No missions yet!</Text></View>
+                );
 
     // return <View style={styles.container}><Text>hi</Text></View>
 

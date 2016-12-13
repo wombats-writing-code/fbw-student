@@ -9,6 +9,7 @@ import LoginRoute from './Login'
 import Mission from './Mission'
 import MissionsRoute from './Missions'
 import SubjectsRoute from './Subjects'
+import D2LCallbackRoute from './D2LCallback'
 
 
 export const createRoutes = (store) => {
@@ -23,6 +24,7 @@ export const createRoutes = (store) => {
       LoginRoute(store),
       SubjectsRoute(store),
       MissionsRoute(store),
+      D2LCallbackRoute(store),
       CounterRoute(store),      // came with boilerplate, for reference only
 
       {

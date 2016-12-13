@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { browserHistory } from 'react-router'
 
 import { getAuthenticationUrl } from 'fbw-platform-common/d2lutils'
-import credentials from '../../../d2lcredentials'
+import credentials from '../../d2lcredentials'
 
 import './Login.scss'
 
