@@ -113,11 +113,7 @@ class DirectiveCarousel extends Component {
 
     let displayName = typeof outcome === 'undefined' ? 'Unknown LO' : outcome.displayName.text;
     let thumb = (
-      <TouchableOpacity onPress={() => this.props.onSelectDirective(
-        directiveIndex: idx,
-        mission: this.props.mission,
-        sectionId: directive.id,
-        username: this.props.username})}
+      <TouchableOpacity onPress={() => this.props.onSelectDirective(idx)}
                           style={[styles.thumb, idx === this.props.currentDirectiveIndex ? styles.selectedThumb : null]}
                           key={idx}>
           <Text style={styles.thumbLabel}>

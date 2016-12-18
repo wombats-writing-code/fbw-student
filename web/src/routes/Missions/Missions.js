@@ -84,9 +84,12 @@ class Missions extends Component {
       loadingBox =  <LoadingBox type="enter"/>
     }
 
-    let currentMissions = this.props.missions && this.props.missions.length > 0 ?
+    let nonFutureMissions = _.filter(this.props.missions, (mission) => {
+      return checkMissionStatus(mission) !== 'future'
+    })
+    let currentMissions = nonFutureMissions && nonFutureMissions.length > 0 ?
                 ( <ul className="row-list">
-                    {_.map(this.props.missions, this.renderRow)}
+                    {_.map(nonFutureMissions, this.renderRow)}
                   </ul> ) : null;
 
     return (
