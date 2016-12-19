@@ -15,7 +15,7 @@ import {
   View
 } from "react-native";
 
-import {isTarget, filterItemsByTarget, targetStatus, targetKey, directiveIdsFromQuestions} from 'fbw-platform-common/selectors/'
+import {isTarget, filterItemsByTarget, targetKey, directiveIdsFromQuestions} from 'fbw-platform-common/selectors/'
 
 var _ = require('lodash');
 

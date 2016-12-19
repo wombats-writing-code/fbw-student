@@ -16,10 +16,13 @@ class Missions extends Component {
 
   componentDidMount () {
     if (this.props.subjectBankId) {
+      console.log('Missions.js: getting missions from', this.props.subjectBankId)
       this.props.getMissions({
         subjectBankId: this.props.subjectBankId,
         username: this.props.username
       })
+    } else {
+      browserHistory.push('/subjects')
     }
   }
 

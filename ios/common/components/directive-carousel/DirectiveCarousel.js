@@ -79,7 +79,7 @@ var styles = StyleSheet.create({
     justifyContent: 'space-between'
     // flex: 1
   },
-  directiveCheckIcon: {
+  directiveStatusIcon: {
     fontWeight: "700",
     fontSize: 12,
     lineHeight: 10,
@@ -106,9 +106,11 @@ class DirectiveCarousel extends Component {
     let outcomeTargets = _.filter(this.props.targets, (t) => t.learningObjectiveIds.indexOf(directive.learningObjectiveId) > -1);
     let outcome = _.find(this.props.outcomes, {id: directive.learningObjectiveId})
     let image;
-    if (hasAchievedDirective(outcomeTargets)) {
-      // image = <Image style={styles.directiveCheckIcon} source={require('../../assets/responseType--correct.png')}/>
-      image = <Text style={styles.directiveCheckIcon}>&#x02713;</Text>
+    if (hasAchievedDirective(outcomeTargets) === true) {
+      // image = <Image style={styles.directiveStatusIcon} source={require('../../assets/responseType--correct.png')}/>
+      image = <Text style={styles.directiveStatusIcon}>&#x02713;</Text>
+    } else if (hasAchievedDirective(outcomeTargets) === false) {
+      image = <Text style={styles.directiveStatusIcon}>&#x02717;</Text>
     }
 
     let displayName = typeof outcome === 'undefined' ? 'Unknown LO' : outcome.displayName.text;
