@@ -12,3 +12,5 @@ UserInterfaceState.xcuserstate
 
 *.credentials.js
 s3_website*.yml
+
+*.swp
