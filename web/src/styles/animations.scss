@@ -13,6 +13,16 @@ $green: #96CEB4;
 // $blue: #0eb7da;
 
 // === fade in and out animation
+@-moz-keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
+@-webkit-keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
 @keyframes fade {
   0%,100% { opacity: 0 }
   50% { opacity: 1 }
@@ -66,6 +76,9 @@ $green: #96CEB4;
   &::before {
     border-top-color: $green; // Make borders visible
     border-right-color: $green;
+    -moz-transition:
+      width 1s ease-out, // Width expands first
+      height 1s ease-out 1s; // And then height
     transition:
       width 1s ease-out, // Width expands first
       height 1s ease-out 1s; // And then height
@@ -74,6 +87,10 @@ $green: #96CEB4;
   &::after {
     border-bottom-color: $green; // Make borders visible
     border-left-color: $green;
+    -moz-transition:
+      border-color 0s ease-out 2s, // Wait for ::before to finish before showing border
+      width 1s ease-out 2s, // And then exanding width
+      height 1s ease-out 3s; // And finally height
     transition:
       border-color 0s ease-out 2s, // Wait for ::before to finish before showing border
       width 1s ease-out 2s, // And then exanding width
@@ -85,6 +102,8 @@ $green: #96CEB4;
 
 .fade-in-out {
   opacity: 1;
+  -moz-animation: fade 1.75s infinite ease;
+  -webkit-animation: fade 1.75s infinite ease;
   animation: fade 1.75s infinite ease;
 }
 
