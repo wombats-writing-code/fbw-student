@@ -15,14 +15,28 @@ import { localDateTime, checkMissionStatus } from 'fbw-platform-common/selectors
 class Missions extends Component {
 
   componentDidMount () {
-    if (this.props.subjectBankId) {
+    if (this.props.subjectBankId || this.props.isGetPrivateBankIdInProgress) {
+      // console.log('Missions.js: getting missions from', this.props.subjectBankId)
+      // this.props.getMissions({
+      //   subjectBankId: this.props.subjectBankId,
+      //   username: this.props.username
+      // })
+    } else {
+      browserHistory.push('/subjects')
+    }
+  }
+
+  componentDidUpdate() {
+    console.log('missions updated', this.props)
+    if (this.props.privateBankId &&
+        this.props.subjectBankId &&
+        !this.props.isGetMissionsInProgress &&
+        !this.props.missions) {
       console.log('Missions.js: getting missions from', this.props.subjectBankId)
       this.props.getMissions({
         subjectBankId: this.props.subjectBankId,
         username: this.props.username
       })
-    } else {
-      browserHistory.push('/subjects')
     }
   }
 
@@ -81,7 +95,8 @@ class Missions extends Component {
   render() {
 
     let loadingBox;
-    if (this.props.isGetMissionsInProgress) {
+    console.log('rendering', this.props.isGetMissionsInProgress, this.props.privateBankId)
+    if (this.props.isGetMissionsInProgress || !this.props.privateBankId) {
       loadingBox =  <LoadingBox type="enter-active"/>
     } else {
       loadingBox =  <LoadingBox type="enter"/>
