@@ -79,6 +79,9 @@ class Questions extends Component {
       return null;
     }
 
+    console.log('this.props of Questions.js', this.props);
+
+
     // console.log('will render questions', this.props.questions);
     let inProgressIndicator;
     if (this.props.isInProgressSubmitChoice) {
