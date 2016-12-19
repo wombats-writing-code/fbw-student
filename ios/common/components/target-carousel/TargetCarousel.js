@@ -84,7 +84,7 @@ var styles = StyleSheet.create({
 
 class TargetCarousel extends Component {
   _renderTarget = (target) => {
-    let status = targetStatus(target);
+    let status = targetStatus(target, this.props.currentMissionSections);
     let targetNumber = targetKey(target)
     let image;
     switch(status) {

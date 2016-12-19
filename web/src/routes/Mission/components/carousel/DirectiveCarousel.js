@@ -12,10 +12,13 @@ class DirectiveCarousel extends Component {
   _renderThumb = (directive, idx) => {
     let outcomeTargets = _.filter(this.props.targets, (t) => t.learningObjectiveIds.indexOf(directive.learningObjectiveId) > -1);
     let outcome = _.find(this.props.outcomes, {id: directive.learningObjectiveId})
-    
+
     let image;
-    if (hasAchievedDirective(outcomeTargets)) {
+    if (hasAchievedDirective(outcomeTargets) === true) {
       image = <p className="carousel-thumb__icon">&#x02713;</p>
+
+    } else if (hasAchievedDirective(outcomeTargets) === false) {
+      image = <p className="carousel-thumb__icon warning-color">&#x02717;</p>
     }
 
     let displayName = outcome ? outcome.displayName.text : 'Error. Somehow this outcome is undefined';

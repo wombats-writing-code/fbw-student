@@ -22,8 +22,14 @@ class TargetCarousel extends Component {
   }
 
   _renderTarget = (target, idx) => {
-    let status = targetStatus(target);
     let targetNumber = targetKey(target)
+    let currentSection = this.props.currentMissionSections[this.props.currentDirectiveIndex]
+    let sectionQuestions = currentSection.questions;
+    let targetRouteQuestions = _.filter(sectionQuestions, question => question.displayName.text[0].startsWith(targetNumber));
+
+    // console.log('targetRouteQuestions', targetRouteQuestions)
+
+    let status = targetStatus(target, targetRouteQuestions);
     let image;
     switch(status) {
       case 'COMPLETE':
@@ -33,7 +39,7 @@ class TargetCarousel extends Component {
         image = <img className="target-icon" src={require('fbw-platform-common/assets/target-question--incorrect@2x.png')}/>;
         break;
       case 'NAVIGATED':
-        image = <img className="target-icon"src={require('fbw-platform-common/assets/target-question--navigated@2x.png')}/>;
+        image = <img className="target-icon" src={require('fbw-platform-common/assets/target-question--navigated@2x.png')}/>;
         break;
       case 'PRISTINE':
         image = <img className="target-icon" src={require('fbw-platform-common/assets/target-question@2x.png')}/>;
