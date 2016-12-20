@@ -29,6 +29,20 @@ class Missions extends Component {
     }
   }
 
+  componentDidUpdate() {
+    console.log('missions updated', this.props)
+    if (this.props.privateBankId &&
+        this.props.subjectBankId &&
+        !this.props.isGetMissionsInProgress &&
+        !this.props.missions) {
+      console.log('Missions.js: getting missions from', this.props.subjectBankId)
+      this.props.getMissions({
+        subjectBankId: this.props.subjectBankId,
+        username: this.props.username
+      })
+    }
+  }
+
   renderRow = (rowData, sectionId, rowId) => {
     // Let students view past missions, but not submit any choices.
     // TODO: get the subject names from D2L
@@ -126,6 +140,8 @@ class Missions extends Component {
 
   _onSelectMission (data) {
     let missionState = checkMissionStatus(data.mission)
+    data.bankId = this.props.privateBankId
+
     if (missionState === 'over') {
       this.props.onSelectClosedMission(data)
     } else {

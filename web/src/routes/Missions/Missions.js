@@ -119,6 +119,8 @@ class Missions extends Component {
 
   _onSelectMission (data) {
     let missionState = checkMissionStatus(data.mission)
+    data.bankId = this.props.privateBankId
+
     if (missionState === 'over') {
       this.props.onSelectClosedMission(data)
     } else {

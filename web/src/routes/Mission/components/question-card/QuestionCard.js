@@ -117,6 +117,7 @@ class QuestionCard extends Component {
       }, 1000);
 
       this.props.onSubmitResponse({
+        bankId: this.props.privateBankId,
         choiceId: choiceId,
         questionId: questionId,
         section: this.props.section,
@@ -128,6 +129,7 @@ class QuestionCard extends Component {
   _onShowAnswer = (questionItem) => {
     if (!this.props.isInProgressShowAnswer) {
       this.props.onShowAnswer({
+        bankId: this.props.privateBankId,
         questionId: this.props.question.id,
         section: this.props.section
       });
