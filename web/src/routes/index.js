@@ -3,7 +3,7 @@ import { Router, Route, Link } from 'react-router'
 
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Home from './Home'
-import CounterRoute from './Counter'
+// import CounterRoute from './Counter'
 
 import LoginRoute from './Login'
 import Mission from './Mission'
@@ -25,7 +25,7 @@ export const createRoutes = (store) => {
       SubjectsRoute(store),
       MissionsRoute(store),
       D2LCallbackRoute(store),
-      CounterRoute(store),      // came with boilerplate, for reference only
+      // CounterRoute(store),      // came with boilerplate, for reference only
 
       {
         path: '/missions/:missionName',

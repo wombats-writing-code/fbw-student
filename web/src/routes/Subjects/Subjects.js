@@ -10,7 +10,7 @@ class Subjects extends Component {
   componentDidMount () {
     // console.log('bankIds', this.props.bankIds)
     this.props.getSubjects(this.props.bankIds)
-    this.props.getOutcomes()
+    this.props.getMapping(this.props.bankIds)
   }
 
   renderRow = (subject, index) => {

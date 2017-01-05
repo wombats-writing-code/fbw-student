@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import { browserHistory } from 'react-router'
+import persistState from 'redux-localstorage'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
@@ -20,6 +21,27 @@ export default (initialState = {}) => {
       enhancers.push(devToolsExtension())
     }
   }
+
+  // copy state to local storage
+  enhancers.push(persistState(null, {
+    slicer: paths => state => {
+      let subset = {
+        bank: state.bank,
+        subject: state.subject,
+        result: {},
+        editMission: {},
+        mapping: state.mapping,
+        mission: _.assign({}, state.mission, {
+          isGetMissionsInProgress: false
+        }),
+        login: state.login,
+        location: state.location,
+        view: state.view
+      };
+
+      return subset
+    }
+  }))
 
   // ======================================================
   // Store Instantiation and HMR Setup

@@ -1,5 +1,7 @@
-// import { injectReducer } from '../../store/reducers'
-import D2LCallback from './D2LCallbackContainer'
+import D2LCallbackContainer from 'fbw-platform-common/components/d2l-callback/D2LCallbackContainer'
+import D2LCallbackComponent from 'fbw-platform-common/components/d2l-callback/web/D2LCallback'
+import credentials from '../../d2lcredentials'
+const D2LCallback = D2LCallbackContainer(D2LCallbackComponent, credentials);
 
 export default (store) => ({
   path : 'd2l-callback',

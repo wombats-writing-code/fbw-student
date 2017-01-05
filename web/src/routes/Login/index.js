@@ -1,5 +1,8 @@
-import { injectReducer } from '../../store/reducers'
-import LoginComponent from './Login'
+import LoginComponent from 'fbw-platform-common/components/login/web/Login';
+import LoginContainer from 'fbw-platform-common/components/login/LoginContainer'
+import credentials from '../../d2lcredentials'
+const Login = LoginContainer(LoginComponent, credentials)
+
 
 export default (store) => ({
   path : 'login',
@@ -10,10 +13,9 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
-      const LoginFactory = require('fbw-platform-common/containers/LoginContainer').default
 
       /*  Return getComponent   */
-      cb(null, LoginFactory(LoginComponent))
+      cb(null, Login)
 
     /* Webpack named bundle   */
   }, 'login')

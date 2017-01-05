@@ -49,7 +49,7 @@ class NavBar extends Component {
         break;
 
       case 'missions':
-        if (props.user.isVisitor) {
+        if (props.isVisitor) {
           breadcrumbs.push({
             path: '/subjects',
             name: 'Subjects'
@@ -64,7 +64,7 @@ class NavBar extends Component {
         break;
 
       case '/missions/:missionName':
-        if (props.user.isVisitor) {
+        if (props.isVisitor) {
           breadcrumbs.push({
             path: '/subjects',
             name: 'Subjects'
