@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router'
+import {Link, browserHistory} from 'react-router'
 import DuckImage from '../assets/Duck.jpg'
 import moment from 'moment'
 
 import './HomeView.scss'
+
+import {usernameToDisplayName} from 'fbw-platform-common/selectors/login'
 
 import MissionsContainer from 'fbw-platform-common/containers/MissionsContainer.js'
 import MissionsComponent from '../../Missions/Missions.js'
@@ -12,11 +14,13 @@ const Missions = MissionsContainer(MissionsComponent)
 class Home extends Component {
 
   componentDidMount() {
-    if (this.props.subjectBankId) {
+    if (this.props.bank) {
       this.props.getMissions({
-        subjectBankId: this.props.subjectBankId,      // @Cole: need to fix this for the d2l case;
-        username: this.props.username
+        subjectBankId: this.props.bank.id,
+        username: this.props.user.username
       })
+    } else {
+      browserHistory.push('/login')
     }
   }
 
@@ -41,7 +45,7 @@ class Home extends Component {
     }
 
     let navigationLink;
-    if (this.props.isVisitorLogin) {
+    if (this.props.isVisitor) {
       navigationLink = (
         <Link className="navigation-link" to="/subjects">Go to my Subjects</Link>
       )
@@ -57,7 +61,7 @@ class Home extends Component {
         <div className="row">
           <h1 className="home__greeting">
             <span className="greeting">Welcome</span>,
-            <span className="name"> {this.props.user.displayName}</span>
+            <span className="name"> {usernameToDisplayName(this.props.user.username)}</span>
           </h1>
           {nextActionPrompt}
           {navigationLink}
