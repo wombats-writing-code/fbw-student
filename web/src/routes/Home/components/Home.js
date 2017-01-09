@@ -20,7 +20,7 @@ class Home extends Component {
         username: this.props.user.username
       })
     } else {
-      browserHistory.push('/login')
+      // browserHistory.push('/login')
     }
   }
 
