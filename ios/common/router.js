@@ -8,25 +8,28 @@ import { Navigator, StyleSheet, Text, View } from 'react-native';
 import { Modal, Reducer, Router, Scene, Actions } from 'react-native-router-flux';
 const RouterWithRedux = connect()(Router);
 
-var Error = require('./components/error/Error');
-var InitializeQBank = require('./components/initialize/InitializeQBank');
-var Loading = require('./components/loading/Loading');
+const d2lCredentials = '../d2lcredentials'
 
 import MissionsContainer from 'fbw-platform-common/containers/MissionsContainer';
 import MissionsComponent from './components/missions/Missions'
+const Missions = MissionsContainer(MissionsComponent)
 
 import MissionContainer from 'fbw-platform-common/containers/MissionContainer';
 import MissionComponent from './components/mission/Mission'
+const Mission = MissionContainer(MissionComponent)
 
-import LoginContainer from 'fbw-platform-common/containers/LoginContainer'
-import LoginComponent from './components/login/SimpleLogin'
-import IntegratedLoginComponent from './components/login/IntegratedLogin'
+import LoginContainer from 'fbw-platform-common/components/login/LoginContainer'
+import LoginComponent from 'fbw-platform-common/components/login/ios/Login'
+const Login = LoginContainer(LoginComponent, d2lCredentials)
 
 import SubjectsContainer from 'fbw-platform-common/containers/SubjectsContainer'
 import SubjectComponent from './components/subjects/Subjects'
+const Subjects = SubjectsContainer(SubjectComponent)
 
 import SplashContainer from 'fbw-platform-common/containers/SplashContainer'
 import SplashComponent from './components/splash/Splash'
+
+import {authenticateD2LStudent} from 'fbw-platform-common/reducers/login/authenticateD2L';
 
 
 const styles = {
@@ -70,7 +73,7 @@ const AppRouter = () => {
                      titleStyle={loginTitleStyle}
                      navigationBarStyle={loginNavBarStyle}
                      />
-              <Scene component={LoginContainer(IntegratedLoginComponent)}
+              <Scene component={Login}
                      key="login"
                      type="reset"
                      title={"Fly-by-Wire".toUpperCase()}
@@ -90,14 +93,14 @@ const AppRouter = () => {
                      type="reset"
                      titleStyle={loginTitleStyle}
                      navigationBarStyle={loginNavBarStyle} /> */}
-              <Scene component={MissionsContainer(MissionsComponent)}
+              <Scene component={Missions}
                      key="missions"
                      title={"Your Missions".toUpperCase()}
                      titleStyle={styles.titleStyle}
                      navigationBarStyle={styles.navigationBarStyle}
                      onRight={logout}
                      rightTitle="Logout" />
-              <Scene component={MissionContainer(MissionComponent)}
+              <Scene component={Mission}
                      key="mission"
                      title={"Mission".toUpperCase()}
                      titleStyle={styles.titleStyle}
@@ -108,7 +111,7 @@ const AppRouter = () => {
                      type="reset"
                      titleStyle={loginTitleStyle}
                      navigationBarStyle={loginNavBarStyle}
-                     component={SubjectsContainer(SubjectComponent)}
+                     component={Subjects}
                      title={"Subjects".toUpperCase()}
                      onRight={logout}
                      rightTitle="Logout" />
@@ -119,7 +122,7 @@ const AppRouter = () => {
                      component={LoginContainer(LoginComponent)}
                      title={"Logout".toUpperCase()} /> */}
         </Scene>
-        <Scene key="error" component={Error} title="Error!" />
+        {/* <Scene key="error" component={Error} title="Error!" /> */}
       </Scene>
     </RouterWithRedux>
   )
