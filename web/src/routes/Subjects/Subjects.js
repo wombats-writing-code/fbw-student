@@ -9,23 +9,24 @@ import './Subjects.scss'
 class Subjects extends Component {
   componentDidMount () {
     // console.log('bankIds', this.props.bankIds)
-    this.props.getSubjects(this.props.bankIds)
-    this.props.getMapping(this.props.bankIds)
+    // deprecated getSubjects call, because banks is now set elsewhere?
+    // this.props.getSubjects(this.props.bankIds)
+    this.props.getMapping(_.map(this.props.subjects, 'id'))
   }
 
   renderRow = (subject, index) => {
       return (
         <li className="clickable-row" key={index} >
-          <button className="clickable-row__button" tabIndex={index + 1} onClick={() => this._onSelectSubject(subject.id)}>
-            <p className="row-title">{subject.displayName.text}</p>
-            <p className="row-subtitle">{subject.description.text}</p>
+          <button className="clickable-row__button" tabIndex={index + 1} onClick={() => this._onSelectSubject(subject)}>
+            <p className="row-title">{subject.displayName}</p>
+            <p className="row-subtitle">{subject.description}</p>
           </button>
         </li>
       );
   }
 
   render() {
-    if (this.props.isGetSubjectsInProgress || !this.props.subjects || !this.props.username) {
+    if (!this.props.subjects || !this.props.user.username) {
       return <Spinner />
     }
 
@@ -44,11 +45,8 @@ class Subjects extends Component {
     </div>;
   }
 
-  _onSelectSubject(subjectId) {
-    this.props.onSelectSubject({
-      bankId: subjectId,
-      username: this.props.username
-    })
+  _onSelectSubject(subject) {
+    this.props.onSelectSubject(subject, this.props.user.username)
 
     browserHistory.push(`/missions`)
 
