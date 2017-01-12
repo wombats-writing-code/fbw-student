@@ -25,17 +25,22 @@ class Missions extends Component {
         username: this.props.user.username
       })
     }
+
+    // assume if modules not there, neither are outcomes or relationships
+    // We need to kick this off here for D2L students.
+    if (!this.props.mapping.modules) {
+      this.props.getMapping()
+    }
   }
 
   componentDidUpdate() {
-    console.log('missions updated', this.props)
     if (this.props.bank &&
         !this.props.isGetMissionsInProgress &&
+        !this.props.isGetPrivateBankIdInProgress &&
         !this.props.missions) {
-      console.log('Missions.js: getting missions from', this.props.bank.id)
       this.props.getMissions({
         subjectBankId: this.props.bank.id,
-        username: this.props.username
+        username: this.props.user.username
       })
     }
   }
