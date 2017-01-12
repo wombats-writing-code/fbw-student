@@ -25,6 +25,12 @@ class Missions extends Component {
         username: this.props.user.username
       })
     }
+
+    // assume if modules not there, neither are outcomes or relationships
+    // We need to kick this off here for D2L students.
+    if (!this.props.mapping.modules) {
+      this.props.getMapping()
+    }
   }
 
   componentDidUpdate() {
