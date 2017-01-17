@@ -32,7 +32,8 @@ export default (initialState = {}) => {
         editMission: {},
         mapping: state.mapping,
         mission: _.assign({}, state.mission, {
-          isGetMissionsInProgress: false
+          isGetMissionsInProgress: false,
+          missions: null
         }),
         login: state.login,
         location: state.location,

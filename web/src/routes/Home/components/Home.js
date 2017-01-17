@@ -20,7 +20,7 @@ class Home extends Component {
         username: this.props.user.username
       })
     } else {
-      browserHistory.push('/login')
+      // browserHistory.push('/login')
     }
   }
 
@@ -57,8 +57,8 @@ class Home extends Component {
 
 
     return (
-      <div className="home">
-        <div className="row">
+      <div className="home row">
+        <div className="columns">
           <h1 className="home__greeting">
             <span className="greeting">Welcome</span>,
             <span className="name"> {usernameToDisplayName(this.props.user.username)}</span>
