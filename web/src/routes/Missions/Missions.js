@@ -15,27 +15,35 @@ import {localDateTime, checkMissionStatus} from 'fbw-platform-common/utilities/t
 class Missions extends Component {
 
   componentDidMount () {
-    if (this.props.bank) {
+    // @luwenh, need to check for privateBankId here, just to make sure
+    // that it's set up properly on the server. Otherwise this will call
+    // and the middleman will error out (because the privateBankAlias doesn't
+    // exist yet)
+    if (this.props.bank && !this.props.isGetPrivateBankIdInProgress) {
       this.props.getMissions({
         subjectBankId: this.props.bank.id,      // @Cole: need to fix this for the d2l case;
         username: this.props.user.username
       })
     }
+
+    // assume if modules not there, neither are outcomes or relationships
+    // We need to kick this off here for D2L students.
+    if (!this.props.mapping.modules) {
+      this.props.getMapping()
+    }
   }
 
-  // componentDidUpdate() {
-  //   console.log('missions updated', this.props)
-  //   if (this.props.privateBankId &&
-  //       this.props.subjectBankId &&
-  //       !this.props.isGetMissionsInProgress &&
-  //       !this.props.missions) {
-  //     console.log('Missions.js: getting missions from', this.props.subjectBankId)
-  //     this.props.getMissions({
-  //       subjectBankId: this.props.subjectBankId,
-  //       username: this.props.username
-  //     })
-  //   }
-  // }
+  componentDidUpdate() {
+    if (this.props.bank &&
+        !this.props.isGetMissionsInProgress &&
+        !this.props.isGetPrivateBankIdInProgress &&
+        !this.props.missions) {
+      this.props.getMissions({
+        subjectBankId: this.props.bank.id,
+        username: this.props.user.username
+      })
+    }
+  }
 
   renderRow = (mission, sectionId, rowId) => {
     // Let students view past missions, but not submit any choices.
@@ -92,7 +100,7 @@ class Missions extends Component {
   render() {
 
     let loadingBox;
-    if (this.props.isGetMissionsInProgress) {
+    if (this.props.isGetMissionsInProgress || this.props.isGetPrivateBankIdInProgress) {
       loadingBox =  <LoadingBox type="enter-active"/>
     } else {
       loadingBox =  <LoadingBox type="enter"/>

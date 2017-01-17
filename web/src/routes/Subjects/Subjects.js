@@ -11,7 +11,8 @@ class Subjects extends Component {
     // console.log('bankIds', this.props.bankIds)
     // deprecated getSubjects call, because banks is now set elsewhere?
     // this.props.getSubjects(this.props.bankIds)
-    this.props.getMapping(_.map(this.props.subjects, 'id'))
+    // do this once they select a subject
+    // this.props.getMapping(_.map(this.props.subjects, 'id'))
   }
 
   renderRow = (subject, index) => {
@@ -46,6 +47,7 @@ class Subjects extends Component {
   }
 
   _onSelectSubject(subject) {
+    this.props.getMapping(subject.id, this.props.banks)
     this.props.onSelectSubject(subject, this.props.user.username)
 
     browserHistory.push(`/missions`)
