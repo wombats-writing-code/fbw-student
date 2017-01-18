@@ -28,7 +28,7 @@ export default (initialState = {}) => {
       let subset = {
         bank: state.bank,
         subject: state.subject,
-        result: {},
+        result: _.omit(state.result, ['phaseIResults', 'phaseIIResults']),
         editMission: {},
         mapping: state.mapping,
         mission: _.assign({}, state.mission, {

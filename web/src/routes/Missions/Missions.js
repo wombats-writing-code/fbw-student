@@ -28,9 +28,9 @@ class Missions extends Component {
 
     // assume if modules not there, neither are outcomes or relationships
     // We need to kick this off here for D2L students.
-    if (!this.props.mapping.modules) {
-      this.props.getMapping()
-    }
+    // if (!this.props.mapping.modules) {
+      this.props.getMapping();
+    // }
   }
 
   componentDidUpdate() {
@@ -113,6 +113,8 @@ class Missions extends Component {
                 ( <ul className="row-list">
                     {_.map(nonFutureMissions, this.renderRow)}
                   </ul> ) : null;
+
+    console.log('currentMissions', currentMissions);
 
     return (
       <div className="medium-8 medium-centered large-6 large-centered columns">
