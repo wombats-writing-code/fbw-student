@@ -16,7 +16,10 @@ class AppContainer extends Component {
     // console.log('state in AppContainer', state)
     console.log('window.location.pathname', window.location.pathname)
 
-    if (window.location.pathname.indexOf('d2l-callback') === -1) {
+    if (window.location.pathname.indexOf('logout-success') > -1) {
+      // do nothing on the logout-succcess page
+
+    } else if (window.location.pathname.indexOf('d2l-callback') === -1) {
       if (!isLoggedIn(state)) browserHistory.push('/login');
 
     } else {
