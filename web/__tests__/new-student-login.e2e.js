@@ -104,7 +104,16 @@ describe('student web app', () => {
   //   })
   // })
   function deleteMissionAsync(missionId) {
-    return chai.request(server)
+    return chai.request(BASE_URL)
+     .delete(`/middleman/banks/${ALGEBRA_BANK_ID}/missions/${missionId}`)
+     .then((res) => {
+      //  console.log('delete res', res.text)
+       return res.text ? JSON.parse(res.text) : null;
+     });
+  }
+
+  function deleteAuthzAsync(student) {
+    return chai.request(BASE_URL)
      .delete(`/middleman/banks/${ALGEBRA_BANK_ID}/missions/${missionId}`)
      .then((res) => {
       //  console.log('delete res', res.text)
@@ -113,9 +122,9 @@ describe('student web app', () => {
   }
 
   function cleanUpPromise(student) {
-    console.log('cleaning up for', student.agentId);
+    console.log('cleaning up for', student);
 
-    return chai.request(server)
+    return chai.request(BASE_URL)
     .get(`/middleman/banks/${ALGEBRA_BANK_ID}/missions`)
     .set('x-fbw-username', student.agentId)
     .then( (res) => {
