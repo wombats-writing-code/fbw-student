@@ -114,7 +114,7 @@ class Missions extends Component {
                     {_.map(nonFutureMissions, this.renderRow)}
                   </ul> ) : null;
 
-    console.log('currentMissions', currentMissions);
+    // console.log('currentMissions', currentMissions);
 
     return (
       <div className="medium-8 medium-centered large-6 large-centered columns">

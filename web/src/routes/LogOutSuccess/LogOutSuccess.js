@@ -9,7 +9,7 @@ class LogOutSuccess extends Component {
 
     return (
       <div className="logout-success flex-container justify-center align-center">
-        <div class="logout-success__wrapper">
+        <div className="logout-success__wrapper">
           <p className="logout-success__prompt text-center">
             You must also log out from your D2L account. Go to:
           </p>

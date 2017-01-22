@@ -1,0 +1,55 @@
+@import '../../styles/base';
+
+.button-bar .button:not(:last-child) {
+  margin-right: 1em;
+}
+
+.button.is-active {
+  background: $app-red;
+}
+
+.guide {
+  text-align: left;
+}
+
+.splash-banner {
+	height: 500px;
+	width: 100%;
+	background: #eee;
+	margin-bottom: 3em;
+  text-align: center;
+}
+
+.instruction-list {
+	margin-bottom: 3em;
+}
+
+.instruction {
+	position: relative;
+	margin-bottom: 3em;
+	padding: 1.5em 3em;
+}
+
+.instruction:nth-child(even) {
+	background: #f8f8f8;
+}
+
+.instruction-list {
+	list-style: none;
+	counter-reset: custom-counter;
+}
+
+.instruction:before {
+	content: counter(custom-counter, decimal);
+	counter-increment: custom-counter;
+	font-size: 2em;
+	font-weight: 600;
+	position: absolute;
+	left: .5em;
+	top: .4em;
+}
+
+
+.instruction img {
+	margin-bottom: 1.5em;
+}
