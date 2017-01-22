@@ -11,16 +11,14 @@ class Subjects extends Component {
     // console.log('bankIds', this.props.bankIds)
     // deprecated getSubjects call, because banks is now set elsewhere?
     // this.props.getSubjects(this.props.bankIds)
-    // do this once they select a subject
-    // this.props.getMapping(_.map(this.props.subjects, 'id'))
   }
 
   renderRow = (subject, index) => {
       return (
         <li className="clickable-row" key={index} >
           <button className="clickable-row__button" tabIndex={index + 1} onClick={() => this._onSelectSubject(subject)}>
-            <p className="row-title">{subject.displayName}</p>
-            <p className="row-subtitle">{subject.description}</p>
+            <p className="row-title">{subject.displayName && subject.displayName.text ? subject.displayName.text : subject.displayName}</p>
+            <p className="row-subtitle">{subject.description && subject.description.text ? subject.description.text : subject.description}</p>
           </button>
         </li>
       );
