@@ -14,7 +14,7 @@ import MissionsContainer from 'fbw-platform-common/containers/MissionsContainer'
 import MissionsComponent from './components/missions/Missions'
 const Missions = MissionsContainer(MissionsComponent)
 
-import MissionContainer from 'fbw-platform-common/containers/MissionContainer';
+import MissionContainer from 'fbw-platform-common/components/mission/MissionContainer';
 import MissionComponent from './components/mission/Mission'
 const Mission = MissionContainer(MissionComponent)
 
@@ -29,7 +29,7 @@ const Subjects = SubjectsContainer(SubjectComponent)
 import SplashContainer from 'fbw-platform-common/containers/SplashContainer'
 import SplashComponent from './components/splash/Splash'
 
-import {authenticateD2LStudent} from 'fbw-platform-common/reducers/login/authenticateD2L';
+import {authenticateD2LStudent} from 'fbw-platform-common/reducers/Login/authenticateD2L';
 
 
 const styles = {

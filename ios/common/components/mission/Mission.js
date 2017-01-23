@@ -10,24 +10,20 @@ import {
 
 import _ from 'lodash'
 
-import {isTarget, filterItemsByTarget, targetStatus, targetKey, directiveIdsFromQuestions} from 'fbw-platform-common/selectors'
 
-// import DirectiveContainer from 'fbw-platform-common/containers/DirectiveContainer'
-// import DirectiveComponent from '../directive/Directive'
-import DirectiveCarouselContainer from 'fbw-platform-common/containers/DirectiveCarouselContainer'
+import DirectiveCarouselContainer from 'fbw-platform-common/components/mission/DirectiveCarouselContainer'
 import DirectiveCarouselComponent from '../directive-carousel/DirectiveCarousel'
 const DirectiveCarousel = DirectiveCarouselContainer(DirectiveCarouselComponent)
 
-import TargetCarouselContainer from 'fbw-platform-common/containers/TargetCarouselContainer'
+import TargetCarouselContainer from 'fbw-platform-common/components/mission/TargetCarouselContainer'
 import TargetCarouselComponent from '../target-carousel/TargetCarousel'
 const TargetCarousel = TargetCarouselContainer(TargetCarouselComponent)
 
-import QuestionsContainer from 'fbw-platform-common/containers/QuestionsContainer'
+import QuestionsContainer from 'fbw-platform-common/components/questions/QuestionsContainer'
 import QuestionsComponent from '../questions/Questions'
 const Questions = QuestionsContainer(QuestionsComponent)
 
 
-import BASE_STYLES from 'fbw-platform-common/styles/base-styles';
 const styles = require('./Mission.styles')
 
 

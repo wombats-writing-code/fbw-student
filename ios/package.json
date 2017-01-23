@@ -13,7 +13,7 @@
     "es6-promise": "^3.2.1",
     "events": "^1.1.0",
     "fbjs": "^0.8.3",
-    "fbw-platform-common": "^0.11.0",
+    "fbw-platform-common": "^2.1.22",
     "fbw-utils": "^0.2.0",
     "flux": "^2.1.1",
     "keymirror": "^0.1.1",
@@ -37,6 +37,7 @@
     "valence": "github:wombats-writing-code/valence-sdk-javascript"
   },
   "devDependencies": {
+    "babel-preset-airbnb": "^2.1.1",
     "concurrently": "^3.1.0",
     "flow-bin": "^0.33.0",
     "gulp": "^3.9.1",
