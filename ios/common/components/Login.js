@@ -21,6 +21,8 @@ class Login extends Component {
     }
   }
   componentDidMount () {
+    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+
     if (this.props.username) {
       this.props.logout()
       Actions.login()
