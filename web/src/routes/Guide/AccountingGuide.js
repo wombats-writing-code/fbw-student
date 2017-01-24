@@ -78,7 +78,7 @@ const AlgebraGuide = (props) => {
               </div>
             </li>
             <li className="instruction">
-              <p>If you do not achieve a directive, you get to try it again in Phase II.</p>
+              <p>If you do not achieve a goal, you get to try it again in Phase II.</p>
             </li>
           </ol>
         </div>

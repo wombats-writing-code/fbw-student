@@ -12,7 +12,7 @@ class NavBar extends Component {
 
     return (
       <div className="nav-bar flex-container align-center space-between">
-        <img className="nav-bar__logo" src={require('fbw-platform-common/assets/logo-site--inverted.png')}/>
+        <a href="/"><img className="nav-bar__logo" src={require('fbw-platform-common/assets/logo-site--inverted.png')}/></a>
         <ul className="breadcrumbs">
           {_.map(breadcrumbs, (crumb, idx) => {
             return (
