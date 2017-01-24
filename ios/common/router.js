@@ -8,7 +8,7 @@ import { Navigator, StyleSheet, Text, View } from 'react-native';
 import { Modal, Reducer, Router, Scene, Actions } from 'react-native-router-flux';
 const RouterWithRedux = connect()(Router);
 
-const d2lCredentials = '../d2lcredentials'
+import credentials from '../d2lcredentials'
 
 import MissionsContainer from 'fbw-platform-common/containers/MissionsContainer';
 import MissionsComponent from './components/missions/Missions'
@@ -21,7 +21,7 @@ const Mission = MissionContainer(MissionComponent)
 import LoginContainer from 'fbw-platform-common/components/login/LoginContainer'
 // import LoginComponent from 'fbw-platform-common/components/login/ios/Login'
 import LoginComponent from './components/Login'
-const Login = LoginContainer(LoginComponent, d2lCredentials)
+const Login = LoginContainer(LoginComponent, credentials)
 
 import SubjectsContainer from 'fbw-platform-common/containers/SubjectsContainer'
 import SubjectComponent from './components/subjects/Subjects'
