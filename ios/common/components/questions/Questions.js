@@ -15,16 +15,14 @@ import {
   View
 } from "react-native";
 
-import {isTarget, filterItemsByTarget, targetKey, directiveIdsFromQuestions} from 'fbw-platform-common/selectors/'
+import _ from 'lodash';
 
-var _ = require('lodash');
+import QuestionCardContainer from 'fbw-platform-common/components/question-card/QuestionCardContainer'
+import QuestionCardComponent from '../question-card/QuestionCard'
+const QuestionCard = QuestionCardContainer(QuestionCardComponent);
 
-import QuestionContainer from 'fbw-platform-common/containers/QuestionContainer'
-import QuestionComponent from '../question-card/QuestionCard'
-const QuestionCard = QuestionContainer(QuestionComponent)
+import NextCue from './NextCue'
 
-var AnsweredQuestionCard = require('../question-card/AnsweredQuestionCard');
-var AnsweredQuestionCue = require('../question-card/AnsweredQuestionCue');
 var ShowAnswerPrompt = require('../show-answer/ShowAnswerPrompt');
 var ShowAnswer = require('../show-answer/ShowAnswer');
 
@@ -64,8 +62,8 @@ class Questions extends Component {
 
       return (
         <View>
-          <AnsweredQuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded}/>
-          <AnsweredQuestionCue isLastTarget={this.props.isLastTarget}
+          <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded}/>
+          <NextCue isLastTarget={this.props.isLastTarget}
                                response={questionItem.response}
                                outcome = {outcome}
                                nextQuestion={nextQuestion}

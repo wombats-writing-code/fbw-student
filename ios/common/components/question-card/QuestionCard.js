@@ -1,10 +1,6 @@
 // QuestionCard.js
 
-'use strict';
-
-import React, {
-    Component,
-}  from 'react';
+import React, { Component, }  from 'react';
 import {
   Dimensions, Animated,
   ListView,
@@ -18,13 +14,11 @@ import {
   Actions
 } from "react-native-router-flux";
 
-import { isTarget, checkMissionStatus } from 'fbw-platform-common/selectors';
+import { isTarget } from 'fbw-platform-common/selectors/mission';
 
 var _ = require('lodash');
 
-import ChoicesContainer from 'fbw-platform-common/containers/ChoicesContainer'
-import ChoicesComponent from '../choice/Choices'
-const Choices = ChoicesContainer(ChoicesComponent)
+import Choices from './Choices'
 
 var MathWebView = require('../math-webview/MathWebView')
 var QuestionHeader = require('./QuestionHeader');
@@ -36,65 +30,76 @@ let PULSE_ACTION = new Animated.Value(0)
 
 class QuestionCard extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedChoiceId: null,
+      isExpanded: props.isExpanded
+    }
+  }
+
   render() {
     let submitButtonText;
-    if (!this.props.isInProgressSubmitChoice && this.props.selectedChoiceId) {
+    if (!this.props.isInProgressSubmitChoice && this.state.selectedChoiceId) {
       submitButtonText = <Text style={styles.submitButtonText}>Submit</Text>
 
-    } else if (!this.props.selectedChoiceId && !this.props.selectedChoiceId) {
+    } else if (!this.props.selectedChoiceId && !this.state.selectedChoiceId) {
       submitButtonText = <Text style={styles.submitButtonText}>Submit</Text>
 
     } else {
       submitButtonText = <Text style={styles.submitButtonText}>Working...</Text>
-
     }
 
     let submitButton;
-
-    if (checkMissionStatus(this.props.mission) === 'pending' && !this.props.isInProgressSubmitChoice) {
-      submitButton = (<TouchableHighlight onPress={() => this._onSubmitChoice(this.props.selectedChoiceId, this.props.question.id)}
-                                          style={[styles.submitButton, this.props.selectedChoiceId && styles.submitButtonActive]}>
+    if (!this.props.isInProgressSubmitChoice) {
+      submitButton = (
+        <TouchableHighlight onPress={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
+                                          style={[styles.submitButton, this.state.selectedChoiceId && styles.submitButtonActive]}>
             {submitButtonText}
         </TouchableHighlight>);
     }
 
-    // since we don't have rules yet, every question is a target question
+    // =====
+    // this block determines the icon image that should be shown, depending on the question and whether it's been answered
+    // ======
     let questionTypeIcon;
     if (isTarget(this.props.question)) {
       questionTypeIcon = <Image source={require('fbw-platform-common/assets/target-icon@2x.png')} />
     } else {
       questionTypeIcon = <Image source={require('fbw-platform-common/assets/waypoint-icon@2x.png')} />
-
     }
+
+    // ====
+    // determines whether solution should be shown
+    // =====
+    let solution = (this.props.question.responded && this.state.isExpanded) ?
+                    (<div className="solution">
+                        <p className="bold">Solution</p>
+                        <div className="question-card__body"
+                          dangerouslySetInnerHTML={{__html: this.props.question.response.feedback.text}}>
+                        </div>
+                      </div>) : null;
+
+    // ====
+    // determines whether choices should be shown
+    // =====
+    let choices = this.state.isExpanded ?
+          (<Choices onSelectChoice={(choiceId) => this.setState({selectedChoiceId: choiceId})}
+                      selectedChoiceId={this.state.selectedChoiceId}
+                      choices={this.props.question.choices}
+                      responseId={this.props.question.responded ? this.props.question.response.choiceIds[0] : null}
+                      isResponseCorrect={this.props.question.isCorrect}/>) : null;
 
     // console.log('question', this.props.question)
-
-    let inProgressIndicator;
-    if (this.props.isInProgressShowAnswer) {
-      if (isTarget(this.props.question)) {
-        inProgressIndicator = (<Animated.View style={[styles.inProgressIndicator]}>
-          <Animated.Text style={[styles.inProgressIndicatorText, this._getTextProgressStyles()]} onLayout={this._onProgressTextLayout}>
-            Fetching the answer...you can no longer get points on this Target.
-          </Animated.Text>
-        </Animated.View>)
-      } else {
-        inProgressIndicator = (
-          <Animated.View style={[styles.inProgressIndicator]}>
-            <Animated.Text style={[styles.inProgressIndicatorText, this._getTextProgressStyles()]}>
-              Fetching the answer...
-            </Animated.Text>
-          </Animated.View>
-        )
-      }
-
-    }
 
     return (
     <View style={[styles.container]}>
       <QuestionHeader questionTypeIcon={questionTypeIcon}
                       headerText={this.props.outcome ? this.props.outcome.displayName.text : ''}
                       onShowAnswer={() => this._onShowAnswer(this.props.question)}
-                      isExpandable={false}
+                      isExpanded={this.state.isExpanded}
+                      isExpandable={this.props.question.responded || this.props.isExpandable}
+                      onToggleExpand={() => this.setState({isExpanded: !this.state.isExpanded})}
       />
 
       {inProgressIndicator}
@@ -103,9 +108,11 @@ class QuestionCard extends Component {
         <MathWebView content={this.props.question.text.text}
                      onAdjustHeight={(height) => this.setState({questionHeight: height})}/>
 
-        <Choices question={this.props.question} />
+        {choices}
+        {solution}
       </View>
-        {submitButton}
+
+      {submitButton}
     </View>
     )
   }
@@ -113,26 +120,17 @@ class QuestionCard extends Component {
   _onSubmitChoice = (choiceId, questionId) => {
     if (!this.props.isInProgressSubmitChoice) {
       this.props.onSubmitResponse({
-        bankId: this.props.privateBankId,
+        bankId: this.props.bank.id,
         choiceId: choiceId,
         questionId: questionId,
         section: this.props.section,
-        username: this.props.username
+        username: this.props.user.username
       });
     }
   }
 
-  _onProgressTextLayout = () => {
-    console.log('_onProgressTextLayout')
-  }
 
-  _getTextProgressStyles = () => {
-    console.log('_getTextProgressStyles', PULSE_ACTION)
-    return {
-      opacity: PULSE_ACTION
-    }
-  }
-
+  // old code below for showing the answer
   _onShowAnswer = (questionItem) => {
     if (!this.props.isInProgressShowAnswer) {
       this.props.onShowAnswer({

@@ -15,19 +15,24 @@ let styles = StyleSheet.create({
   }
 });
 
+/**
+  This component is like AppContainer. It checks whether there's an existing user in local store,
+  if there is, it sends it to the subjects screen
+  if not, it sends it to the login screen
+*/
 
 class Splash extends Component {
 
   componentDidMount() {
-    this.props.onInitialize()
-  }
-  componentDidUpdate() {
-    if (this.props.username && this.props.initialized) {
+    //
+    if (this.props.user && this.props.user.username) {
       Actions.subjects()
     } else {
       Actions.login()
     }
   }
+
+
   render() {
     return (<View style={styles.container}>
       <ActivityIndicator size="large" />
