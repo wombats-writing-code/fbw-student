@@ -19,14 +19,15 @@ import MissionComponent from './components/mission/Mission'
 const Mission = MissionContainer(MissionComponent)
 
 import LoginContainer from 'fbw-platform-common/components/login/LoginContainer'
-import LoginComponent from 'fbw-platform-common/components/login/ios/Login'
+// import LoginComponent from 'fbw-platform-common/components/login/ios/Login'
+import LoginComponent from './components/Login'
 const Login = LoginContainer(LoginComponent, d2lCredentials)
 
 import SubjectsContainer from 'fbw-platform-common/containers/SubjectsContainer'
 import SubjectComponent from './components/subjects/Subjects'
 const Subjects = SubjectsContainer(SubjectComponent)
 
-import SplashContainer from 'fbw-platform-common/containers/SplashContainer'
+import SplashContainer from './components/splash/SplashContainer'
 import SplashComponent from './components/splash/Splash'
 
 import {authenticateD2LStudent} from 'fbw-platform-common/reducers/Login/authenticateD2L';
@@ -93,7 +94,7 @@ const AppRouter = () => {
                      type="reset"
                      titleStyle={loginTitleStyle}
                      navigationBarStyle={loginNavBarStyle} /> */}
-              <Scene component={Missions}
+              {/* <Scene component={Missions}
                      key="missions"
                      title={"Your Missions".toUpperCase()}
                      titleStyle={styles.titleStyle}
@@ -114,7 +115,7 @@ const AppRouter = () => {
                      component={Subjects}
                      title={"Subjects".toUpperCase()}
                      onRight={logout}
-                     rightTitle="Logout" />
+                     rightTitle="Logout" /> */}
               {/* <Scene key="logout"
                      type="reset"
                      titleStyle={loginTitleStyle}
