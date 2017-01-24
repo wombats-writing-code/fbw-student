@@ -21,8 +21,8 @@ class Login extends Component {
     }
   }
   componentDidMount () {
-    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
-
+    // console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+    console.log('creds', this.props.credentials)
     if (this.props.username) {
       this.props.logout()
       Actions.login()
@@ -34,8 +34,9 @@ class Login extends Component {
     Linking.removeEventListener('url', this._handleUrlChange);
   }
 
-  _handleUrlChange(event) {
+  _handleUrlChange = (event) => {
     this.props.authenticateD2L(this.props.credentials, event.url);
+    // Actions.subjects()
   }
 
   render () {
