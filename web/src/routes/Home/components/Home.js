@@ -36,13 +36,7 @@ class Home extends Component {
             <span> {moment(this.props.missions[0].deadline).format('dddd[,] MMMM D')}</span>.
         </p>
       )
-    } else {
-      nextActionPrompt = (
-        <p className="next-action-prompt">
-          Well done on your last mission.
-        </p>
-      )
-    }
+    } 
 
     let navigationLink;
     if (this.props.isVisitor) {
