@@ -5,11 +5,13 @@ import persistState from 'redux-localstorage'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
+import logger from 'fbw-platform-common/logger'
+
 export default (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [thunk]
+  const middleware = [thunk, logger]
 
   // ======================================================
   // Store Enhancers

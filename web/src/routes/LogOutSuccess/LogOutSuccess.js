@@ -6,7 +6,6 @@ import './LogOutSuccess.scss'
 class LogOutSuccess extends Component {
 
   render() {
-
     return (
       <div className="logout-success flex-container justify-center align-center">
         <div className="logout-success__wrapper">
