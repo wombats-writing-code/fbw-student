@@ -1,9 +1,8 @@
 // Missions.styles.js
 'use strict';
 
-import {
-  StyleSheet
-} from "react-native";
+import { StyleSheet } from "react-native";
+import BASE_STYLES from 'fbw-platform-common/styles/base-styles'
 
 var styles = StyleSheet.create({
   missionList: {
@@ -41,8 +40,8 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   deadlineTextWarning: {
-    color: 'red',
-    fontWeight: 'bold'
+    color: BASE_STYLES.appRed,
+    fontWeight: '600'
   },
   loadingText: {
     margin: 10,

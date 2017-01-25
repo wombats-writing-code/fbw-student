@@ -67,15 +67,6 @@ var styles = StyleSheet.create({
     margin: 10,
     textAlign: 'center'
   },
-  header: {
-    fontSize: 14,
-    marginBottom: 5.5,
-    marginTop: 50,
-    textAlign: 'center',
-    color: '#fff',
-    fontWeight: "500",
-    fontStyle: 'italic'
-  },
   subjectSubTitle: {
     color: '#999999',
     marginBottom: 5

@@ -10,8 +10,8 @@ import {
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 
-// let styles = require('./Login.styles')
-import styles from 'fbw-platform-common/components/login/ios/Login.styles'
+let styles = require('./Login.styles')
+// import styles from 'fbw-platform-common/components/login/ios/Login.styles'
 
 class Login extends Component {
   constructor() {
@@ -21,8 +21,8 @@ class Login extends Component {
     }
   }
   componentDidMount () {
-    // console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
     console.log('creds', this.props.credentials)
+
     if (this.props.username) {
       this.props.logout()
       Actions.login()
@@ -36,7 +36,7 @@ class Login extends Component {
 
   _handleUrlChange = (event) => {
     this.props.authenticateD2L(this.props.credentials, event.url);
-    // Actions.subjects()
+    Actions.subjects();
   }
 
   render () {
@@ -59,7 +59,7 @@ class Login extends Component {
             autoCorrect={false}
             autoFocus={true}
             onChangeText={(text) => this.props.updateUsername({ username: text.toUpperCase() })}
-            placeholder='Username'
+            placeholder='Enter username'
             placeholderTextColor='#f0f0f0'
             style={styles.usernameInput}
             value={this.props.username} />
@@ -72,23 +72,23 @@ class Login extends Component {
       )
     }
 
-    return <View style={styles.container}>
+    return (
+      <View style={styles.container}>
+        <View style={styles.schoolButtons}>
+          <TouchableOpacity onPress={() => this._handleACCLogin()} style={styles.schoolButton}>
+            <Text style={[styles.schoolButtonText]}>Arapahoe</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this._handleQCCLogin()} style={styles.schoolButton}>
+            <Text style={[styles.schoolButtonText]}>Quinsigamond</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.schoolButtons}>
-        <TouchableOpacity onPress={() => this._handleACCLogin()} style={styles.schoolButton}>
-          <Text style={[styles.schoolButtonText]}>Arapahoe</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._handleQCCLogin()} style={styles.schoolButton}>
-          <Text style={[styles.schoolButtonText]}>Quinsigamond</Text>
-        </TouchableOpacity>
-      </View>
+        <TouchableOpacity onPress={() => this.setState({isVisitorFormVisible: !this.state.isVisitorFormVisible})} style={styles.visitorButton}>
+         <Text style={styles.loginButtonText}>{visitorLoginButtonText}</Text>
+       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => this.setState({isVisitorFormVisible: !this.state.isVisitorFormVisible})} style={styles.visitorButton}>
-       <Text style={styles.loginButtonText}>{visitorLoginButtonText}</Text>
-     </TouchableOpacity>
-
-     {visitorLogin}
-    </View>
+       {visitorLogin}
+      </View>)
   }
 
   _handleACCLogin = () => {

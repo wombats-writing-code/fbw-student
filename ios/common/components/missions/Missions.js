@@ -10,35 +10,18 @@ import _ from 'lodash'
 
 const Icon = require('react-native-vector-icons/FontAwesome')
 
-import { localDateTime, checkMissionStatus } from 'fbw-platform-common/selectors/'
+import {localDateTime, checkMissionStatus} from 'fbw-platform-common/utilities/time'
 const styles = require('./Missions.styles')
 
 class Missions extends Component {
 
   componentDidMount () {
-    // this will probably never get called from here,
-    // because the bankId isn't returned until after this
-    // has mounted.
-    // console.log('getting missions in mount with subjectBankId:', this.props.subjectBankId)
+    console.log('getting missions in Missions.js componentDidMount with subjectBankId:', this.props.bank.id)
 
-    if (this.props.subjectBankId) {
+    if (this.props.bank) {
       this.props.getMissions({
-        subjectBankId: this.props.subjectBankId,
-        username: this.props.username
-      })
-    }
-  }
-
-  componentDidUpdate() {
-    console.log('missions updated', this.props)
-    if (this.props.privateBankId &&
-        this.props.subjectBankId &&
-        !this.props.isGetMissionsInProgress &&
-        !this.props.missions) {
-      console.log('Missions.js: getting missions from', this.props.subjectBankId)
-      this.props.getMissions({
-        subjectBankId: this.props.subjectBankId,
-        username: this.props.username
+        subjectBankId: this.props.bank.id,
+        username: this.props.user.username
       })
     }
   }
@@ -53,7 +36,7 @@ class Missions extends Component {
       deadlineText = 'Due',
       timeRemaining = (dlLocal - now) / 1000 / 60 / 60 / 24 ;
 
-    if (timeRemaining <= 1) {
+    if (timeRemaining <= 1 && timeRemaining > 0) {
       deadlineStyle = styles.deadlineTextWarning
     }
     if (timeRemaining <= 0) {
@@ -75,7 +58,7 @@ class Missions extends Component {
     }
 
     return (
-        <TouchableHighlight onPress={() => this._onSelectMission({mission: rowData, username: this.props.username})}
+        <TouchableHighlight onPress={() => this._onSelectMission(rowData)}
                               style={[styles.touchableHighlightWrapper]}>
 
           <View style={styles.missionWrapper}>
@@ -127,7 +110,7 @@ class Missions extends Component {
     let refreshControl = (
       <RefreshControl
         refreshing={this.props.isGetMissionsInProgress}
-        onRefresh={() => this.props.getMissions(this.props.bankId)}
+        onRefresh={() => this.props.getMissions(this.props.bank.id)}
       />
     )
 
@@ -138,16 +121,18 @@ class Missions extends Component {
       </View>)
   }
 
-  _onSelectMission (data) {
-    let missionState = checkMissionStatus(data.mission)
-    data.bankId = this.props.privateBankId
+  _onSelectMission(mission) {
+    let missionStatus = checkMissionStatus(mission);
+    let username = this.props.user.username;
+    let bankId = this.props.bank.id;
 
-    if (missionState === 'over') {
-      this.props.onSelectClosedMission(data)
+    if (missionStatus === 'over') {
+      this.props.onSelectClosedMission({mission, bankId, username})
     } else {
-      this.props.onSelectOpenMission(data)
+      this.props.onSelectOpenMission({mission, bankId, username})
     }
-    Actions.mission()
+
+    Actions.mission();
   }
 }
 

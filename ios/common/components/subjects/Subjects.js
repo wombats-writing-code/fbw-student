@@ -1,9 +1,6 @@
 // Subjects.js
 // * For the hardcoded case, presents a list of banks / subjects for the user
 //   to select from
-// * Also create the student's private bank (for personalized missions),
-//   make it a child of the class bank, make the shared bank a child of
-//   the private bank, and then set "take" authz on the private bank.
 
 'use strict';
 
@@ -17,18 +14,16 @@ var styles = require('./Subjects.styles');
 
 class Subjects extends Component {
   componentDidMount () {
-    this.props.getSubjects(this.props.bankIds)
-    this.props.getOutcomes()
   }
 
-  renderRow = (rowData) => {
+  renderRow = (subject) => {
       return (
-        <TouchableHighlight onPress={() => this._onSelectSubject(rowData.id)}
+        <TouchableHighlight onPress={() => this._onSelectSubject(subject)}
                                   style={styles.subjectWrapper}>
                 <View>
-                  <Text style={styles.rowTitle}>{(rowData.displayName.text || '').toUpperCase()}
+                  <Text style={styles.rowTitle}>{(subject.displayName.text || '').toUpperCase()}
                   </Text>
-                  <Text style={styles.rowSubtitle}>{rowData.description.text}
+                  <Text style={styles.rowSubtitle}>{subject.description.text}
                   </Text>
                 </View>
               </TouchableHighlight>
@@ -36,7 +31,9 @@ class Subjects extends Component {
   }
 
   render() {
-    if (this.props.isGetSubjectsInProgress || !this.props.subjects || !this.props.username) {
+    console.log('this.props.subjects of Subjects', this.props);
+
+    if (this.props.isGetSubjectsInProgress || !this.props.subjects || !this.props.user.username) {
       return (<View style={styles.container}>
         <ActivityIndicator/>
       </View>)
@@ -55,23 +52,21 @@ class Subjects extends Component {
                     </Text>
                   </View> );
 
-    return <View style={styles.container}>
-      <Text style={styles.header}>
-        Select your Fly-by-Wire subject
-      </Text>
-      <ScrollView>
-        {currentSubjects}
-      </ScrollView>
-    </View>;
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+          {currentSubjects}
+        </ScrollView>
+      </View>);
   }
 
-  _onSelectSubject(subjectId) {
+  _onSelectSubject(subject) {
     if (!this.props.isSelectSubjectInProgress) {
-      this.props.onSelectSubject({
-        bankId: subjectId,
-        username: this.props.username
-      })
-      Actions.missions()
+      console.log('selected subject', subject, 'subjects available', this.props.subjects);
+      this.props.onSelectSubject(subject, this.props.user.username);
+      this.props.getMapping();
+
+      Actions.missions();
     }
   }
 }
