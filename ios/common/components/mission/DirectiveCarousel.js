@@ -11,8 +11,6 @@ import {
   StyleSheet
 } from "react-native";
 
-import { hasAchievedDirective } from 'fbw-platform-common/selectors'
-
 var _ = require('lodash');
 
 var styles = StyleSheet.create({
@@ -103,32 +101,30 @@ var styles = StyleSheet.create({
 
 class DirectiveCarousel extends Component {
   _renderThumb = (directive, idx) => {
-    let outcomeTargets = _.filter(this.props.targets, (t) => t.learningObjectiveIds.indexOf(directive.learningObjectiveId) > -1);
-    let outcome = _.find(this.props.outcomes, {id: directive.learningObjectiveId})
-    let image;
-    if (hasAchievedDirective(outcomeTargets) === true) {
-      // image = <Image style={styles.directiveStatusIcon} source={require('../../assets/responseType--correct.png')}/>
-      image = <Text style={styles.directiveStatusIcon}>&#x02713;</Text>
-    } else if (hasAchievedDirective(outcomeTargets) === false) {
-      image = <Text style={styles.directiveStatusIcon}>&#x02717;</Text>
+
+    let indicatorText;
+    if (this.props.directiveIndicators) {
+      let indicator = this.props.directiveIndicators[idx];
+      indicatorText = `${indicator.numerator || '--'}/${indicator.denominator}`;
     }
 
-    let displayName = typeof outcome === 'undefined' ? 'Unknown LO' : outcome.displayName.text;
+    let displayName = directive ? directive.displayName.text : 'Error. Somehow this outcome is undefined';
     let thumb = (
-      <TouchableOpacity onPress={() => this.props.onSelectDirective(idx)}
-                          style={[styles.thumb, idx === this.props.currentDirectiveIndex ? styles.selectedThumb : null]}
-                          key={idx}>
-          <Text style={styles.thumbLabel}>
-            {image}
-            {displayName}
-          </Text>
-    </TouchableOpacity>)
+        <TouchableOpacity onPress={() => this.props.onSelectDirective(idx)}
+                            style={[styles.thumb, idx === this.props.currentDirectiveIndex ? styles.selectedThumb : null]}
+                            key={idx}>
+            <Text style={styles.thumbLabel}>
+              {indicatorText}
+              {displayName}
+            </Text>
+      </TouchableOpacity>)
 
     return thumb;
-
   }
 
   render() {
+    console.log('props of DirectivesCarousel', this.props);
+    
     return (
       <View style={styles.container}>
 

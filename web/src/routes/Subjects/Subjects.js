@@ -45,8 +45,10 @@ class Subjects extends Component {
   }
 
   _onSelectSubject(subject) {
-    this.props.getMapping(subject.id, this.props.banks)
-    this.props.onSelectSubject(subject, this.props.user.username)
+    // this.props.getMapping(subject.id, this.props.subjects);
+    // for visitor login, let's get both departments' mappings too, even though we can compute which one to get
+    this.props.getMapping();
+    this.props.onSelectSubject(subject, this.props.user.username);
 
     browserHistory.push(`/missions`)
 

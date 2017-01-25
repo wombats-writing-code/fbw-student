@@ -4,24 +4,22 @@
 
 import React, { Component }  from 'react';
 import { ActivityIndicator, Dimensions, ListView, ScrollView, Text, TouchableHighlight, View } from "react-native";
-import {
-  Actions
-} from "react-native-router-flux";
+import { Actions } from "react-native-router-flux";
 
 import _ from 'lodash'
 
 
 import DirectiveCarouselContainer from 'fbw-platform-common/components/mission/DirectiveCarouselContainer'
-import DirectiveCarouselComponent from '../directive-carousel/DirectiveCarousel'
+import DirectiveCarouselComponent from './DirectiveCarousel'
 const DirectiveCarousel = DirectiveCarouselContainer(DirectiveCarouselComponent)
 
-import TargetCarouselContainer from 'fbw-platform-common/components/mission/TargetCarouselContainer'
-import TargetCarouselComponent from '../target-carousel/TargetCarousel'
-const TargetCarousel = TargetCarouselContainer(TargetCarouselComponent)
-
-import QuestionsContainer from 'fbw-platform-common/components/questions/QuestionsContainer'
-import QuestionsComponent from '../questions/Questions'
-const Questions = QuestionsContainer(QuestionsComponent)
+// import TargetCarouselContainer from 'fbw-platform-common/components/mission/TargetCarouselContainer'
+// import TargetCarouselComponent from './TargetCarousel'
+// const TargetCarousel = TargetCarouselContainer(TargetCarouselComponent)
+//
+// import QuestionsContainer from 'fbw-platform-common/components/questions/QuestionsContainer'
+// import QuestionsComponent from '../questions/Questions'
+// const Questions = QuestionsContainer(QuestionsComponent)
 
 
 const styles = require('./Mission.styles')
@@ -39,7 +37,7 @@ class Mission extends Component {
       </View>)
     }
 
-    if (!this.props.hasQuestions) {
+    if (!this.props.currentMissionSections) {
       return (<View style={[styles.container, {justifyContent: 'center'}]}>
         <ActivityIndicator/>
       </View>)
@@ -47,9 +45,12 @@ class Mission extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <DirectiveCarousel />
-        <TargetCarousel />
-        <Questions />
+        <DirectiveCarousel directives={this.props.directives}
+                          currentDirectiveIndex={this.props.currentDirectiveIndex}
+                          directiveIndicators={this.props.directiveIndicators}
+                            onSelectDirective={this.props.onSelectDirective}/>
+        {/* <TargetCarousel />
+        <Questions /> */}
       </View>
     )
   }

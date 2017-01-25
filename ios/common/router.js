@@ -31,7 +31,7 @@ import SplashContainer from './components/splash/SplashContainer'
 import SplashComponent from './components/splash/Splash'
 
 import {authenticateD2LStudent} from 'fbw-platform-common/reducers/Login/authenticateD2L';
-
+import BASE_STYLES from 'fbw-platform-common/styles/baseStyles'
 
 const styles = {
   navigationBarStyle: {
@@ -48,12 +48,13 @@ const styles = {
 const loginTitleStyle = _.assign({}, styles.titleStyle, {
   color: '#fff',
   fontWeight: "600",
-  fontStyle: 'italic',
-  fontSize: 21,
+  fontSize: 14,
 });
+
 const loginNavBarStyle = _.assign({}, styles.navigationBarStyle, {
   marginTop: 14,
-  backgroundColor: '#86bEa4',
+  paddingBottom: 30,
+  backgroundColor: BASE_STYLES.appBlueDark,
   borderBottomWidth: 0,
 });
 
@@ -81,6 +82,28 @@ const AppRouter = () => {
                      titleStyle={loginTitleStyle}
                      navigationBarStyle={loginNavBarStyle}
                      />
+              <Scene key="subjects"
+                      type="reset"
+                      titleStyle={loginTitleStyle}
+                      navigationBarStyle={loginNavBarStyle}
+                      component={Subjects}
+                      title={"Subjects".toUpperCase()}
+                      onRight={logout}
+                      rightTitle="Logout" />
+              <Scene component={Missions}
+                       key="missions"
+                       title={"Your Missions".toUpperCase()}
+                       titleStyle={styles.titleStyle}
+                       navigationBarStyle={styles.navigationBarStyle}
+                       onRight={logout}
+                       rightTitle="Logout" />
+               <Scene component={Mission}
+                      key="mission"
+                      title={"Mission".toUpperCase()}
+                      titleStyle={styles.titleStyle}
+                      navigationBarStyle={styles.navigationBarStyle}
+                      onRight={logout}
+                      rightTitle="Logout" />
               {/* <Scene component={Loading}
                      initial={true}
                      key="loading"
@@ -94,28 +117,7 @@ const AppRouter = () => {
                      type="reset"
                      titleStyle={loginTitleStyle}
                      navigationBarStyle={loginNavBarStyle} /> */}
-              {/* <Scene component={Missions}
-                     key="missions"
-                     title={"Your Missions".toUpperCase()}
-                     titleStyle={styles.titleStyle}
-                     navigationBarStyle={styles.navigationBarStyle}
-                     onRight={logout}
-                     rightTitle="Logout" />
-              <Scene component={Mission}
-                     key="mission"
-                     title={"Mission".toUpperCase()}
-                     titleStyle={styles.titleStyle}
-                     navigationBarStyle={styles.navigationBarStyle}
-                     onRight={logout}
-                     rightTitle="Logout" />
-              <Scene key="subjects"
-                     type="reset"
-                     titleStyle={loginTitleStyle}
-                     navigationBarStyle={loginNavBarStyle}
-                     component={Subjects}
-                     title={"Subjects".toUpperCase()}
-                     onRight={logout}
-                     rightTitle="Logout" /> */}
+              {/*
               {/* <Scene key="logout"
                      type="reset"
                      titleStyle={loginTitleStyle}

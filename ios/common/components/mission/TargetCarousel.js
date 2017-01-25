@@ -2,9 +2,7 @@
 
 'use strict';
 
-import React, {
-    Component,
-}  from 'react';
+import React, { Component, }  from 'react';
 import {
   Dimensions,
   ListView, ScrollView,
@@ -13,7 +11,7 @@ import {
   StyleSheet
 } from "react-native";
 
-import { targetStatus, targetKey } from 'fbw-platform-common/selectors'
+import { targetStatus, targetKey } from 'fbw-platform-common/selectors/mission'
 
 var _ = require('lodash');
 
