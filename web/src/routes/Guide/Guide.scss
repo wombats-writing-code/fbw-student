@@ -1,5 +1,10 @@
 @import '../../styles/base';
 
+
+iframe {
+  border: none;
+}
+
 .button-bar .button:not(:last-child) {
   margin-right: 1em;
 }
@@ -13,7 +18,6 @@
 }
 
 .splash-banner {
-	height: 500px;
 	width: 100%;
 	background: #eee;
 	margin-bottom: 3em;
