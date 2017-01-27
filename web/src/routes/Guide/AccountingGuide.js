@@ -4,7 +4,7 @@ const AlgebraGuide = (props) => {
   return (
     <div className="guide">
       <section className="splash-banner text-center flex-container align-center justify-center">
-        <p className="text-center">Video tutorial coming soon!</p>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/nNlc9GemYKs" frameborder="0" allowfullscreen></iframe>
       </section>
       <section className="instructions" id="instructions">
         <div className="row">
@@ -79,6 +79,16 @@ const AlgebraGuide = (props) => {
             </li>
             <li className="instruction">
               <p>If you do not achieve a goal, you get to try it again in Phase II.</p>
+            </li>
+            <li className="instruction">
+              <p>To log out, click on the <span className="button-ref">Logout</span> button: </p>
+              <img className="" src={require("./assets/logout-button.png")}/>
+
+              <p><b>Important!</b> Then, click on the link to your myACC D2L account:</p>
+              <img className="" src={require("./assets/logout-link.png")}/>
+
+              <p>You <b>must</b> logout from your myACC D2L account!</p>
+              <img className="" src={require("./assets/logout-d2l.png")}/>
             </li>
           </ol>
         </div>
