@@ -13,13 +13,13 @@ import DirectiveCarouselContainer from 'fbw-platform-common/components/mission/D
 import DirectiveCarouselComponent from './DirectiveCarousel'
 const DirectiveCarousel = DirectiveCarouselContainer(DirectiveCarouselComponent)
 
-// import TargetCarouselContainer from 'fbw-platform-common/components/mission/TargetCarouselContainer'
-// import TargetCarouselComponent from './TargetCarousel'
-// const TargetCarousel = TargetCarouselContainer(TargetCarouselComponent)
-//
-// import QuestionsContainer from 'fbw-platform-common/components/questions/QuestionsContainer'
-// import QuestionsComponent from '../questions/Questions'
-// const Questions = QuestionsContainer(QuestionsComponent)
+import TargetCarouselContainer from 'fbw-platform-common/components/mission/TargetCarouselContainer'
+import TargetCarouselComponent from './TargetCarousel'
+const TargetCarousel = TargetCarouselContainer(TargetCarouselComponent)
+
+import QuestionsContainer from 'fbw-platform-common/components/questions/QuestionsContainer'
+import QuestionsComponent from '../questions/Questions'
+const Questions = QuestionsContainer(QuestionsComponent)
 
 
 const styles = require('./Mission.styles')
@@ -49,8 +49,8 @@ class Mission extends Component {
                           currentDirectiveIndex={this.props.currentDirectiveIndex}
                           directiveIndicators={this.props.directiveIndicators}
                             onSelectDirective={this.props.onSelectDirective}/>
-        {/* <TargetCarousel />
-        <Questions /> */}
+        <TargetCarousel />
+        <Questions />
       </View>
     )
   }
