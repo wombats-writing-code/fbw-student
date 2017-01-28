@@ -54,7 +54,7 @@ class Missions extends Component {
       missionTypeIconSource = require('fbw-platform-common/assets/phase-2-icon@2x.png');
 
     } else {
-      console.error('uh oh. could not recognize genusTypeId in Missions.js');
+      // console.error('uh oh. could not recognize genusTypeId in Missions.js', rowData.genusTypeId);
     }
 
     return (
@@ -129,6 +129,7 @@ class Missions extends Component {
     if (missionStatus === 'over') {
       this.props.onSelectClosedMission({mission, bankId, username})
     } else {
+      console.log('selecting open mission of', mission, bankId, username);
       this.props.onSelectOpenMission({mission, bankId, username})
     }
 

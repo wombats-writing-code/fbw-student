@@ -14,6 +14,7 @@ import {
 import { targetStatus, targetKey } from 'fbw-platform-common/selectors/mission'
 
 var _ = require('lodash');
+import baseStyles from 'fbw-platform-common/styles/base-styles'
 
 var styles = StyleSheet.create({
   container: {
@@ -49,7 +50,7 @@ var styles = StyleSheet.create({
     borderBottomColor: 'transparent'
   },
   selectedThumb: {
-    borderBottomColor: '#3498DB'
+    borderBottomColor: baseStyles.appBlueDark
   },
   thumbLabel: {
     marginBottom: 0,
@@ -82,8 +83,13 @@ var styles = StyleSheet.create({
 
 class TargetCarousel extends Component {
   _renderTarget = (target) => {
-    let status = targetStatus(target, this.props.currentMissionSections);
-    let targetNumber = targetKey(target)
+    let targetNumber = targetKey(target);
+    let currentSection = this.props.currentMissionSections[this.props.currentDirectiveIndex];
+    let sectionQuestions = currentSection.questions;
+    let targetRouteQuestions = _.filter(sectionQuestions, question => question.displayName.text[0].startsWith(targetNumber));
+
+    let status = targetStatus(target, targetRouteQuestions);
+
     let image;
     switch(status) {
       case 'COMPLETE':
@@ -127,22 +133,7 @@ class TargetCarousel extends Component {
     }
     return (
       <View style={styles.container}>
-
-        {/* <View style={styles.statusSummary}
-              accessible={true}
-              accessibilityLabel={requiredAccessibilityLabel}>
-          <View style={[styles.flex]}>
-            <Text style={styles.mute}>Required: </Text>
-            <Text style={styles.emphasis}>{this.props.requiredNumber} </Text>
-            <Text style={styles.mute}>of {this.props.targets.length}
-            </Text>
-          </View>
-        </View> */}
-
-
         <View style={styles.carouselContainer}>
-          {/* <Text style={styles.carouselLabel}>To complete,
-            hit at least {Math.ceil(this.props.targets.length / 2)} Target(s) </Text> */}
           <ScrollView
             automaticallyAdjustContentInsets={false}
             horizontal={true}

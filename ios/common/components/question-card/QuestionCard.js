@@ -10,14 +10,10 @@ import {
   View,
   Image
 } from "react-native";
-import {
-  Actions
-} from "react-native-router-flux";
 
 import { isTarget } from 'fbw-platform-common/selectors/mission';
 
-var _ = require('lodash');
-
+import _ from 'lodash';
 import Choices from './Choices'
 
 var MathWebView = require('../math-webview/MathWebView')
@@ -101,8 +97,6 @@ class QuestionCard extends Component {
                       isExpandable={this.props.question.responded || this.props.isExpandable}
                       onToggleExpand={() => this.setState({isExpanded: !this.state.isExpanded})}
       />
-
-      {inProgressIndicator}
 
       <View style={styles.questionBodyWrapper}>
         <MathWebView content={this.props.question.text.text}

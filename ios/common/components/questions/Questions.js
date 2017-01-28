@@ -1,8 +1,4 @@
 // Questions.js
-// * This should check and take care of the student
-//   authorization in QBank for the FbW side of things.
-
-'use strict';
 
 import React, { Component }  from 'react';
 import {
@@ -23,16 +19,15 @@ const QuestionCard = QuestionCardContainer(QuestionCardComponent);
 
 import NextCue from './NextCue'
 
-var ShowAnswerPrompt = require('../show-answer/ShowAnswerPrompt');
-var ShowAnswer = require('../show-answer/ShowAnswer');
+// var ShowAnswerPrompt = require('../show-answer/ShowAnswerPrompt');
+// var ShowAnswer = require('../show-answer/ShowAnswer');
 
 var styles = require('./Questions.styles');
-var BASE_STYLES = require('fbw-platform-common/styles/base-styles');
+import BASE_STYLES from 'fbw-platform-common/styles/base-styles';
 
 
 class Questions extends Component {
   renderListRow = (questionItem, sectionId, rowId) => {
-
     let outcome = _.find(this.props.outcomes, {id: questionItem.learningObjectiveIds[0]});
 
     // console.log('row', rowId, 'total length', this.props.questions.length, 'questions', this.props.questions);
@@ -74,7 +69,9 @@ class Questions extends Component {
     } else {
 
       return (
-        <QuestionCard question={questionItem}/>
+        <QuestionCard question={questionItem} isExpanded={true}
+                      outcome={outcome}
+        />
        )
     }
   }
@@ -166,8 +163,6 @@ class Questions extends Component {
   //   // target manually.
   //   // this.reloadQuestions();
   // }
-
 }
 
-
-module.exports = Questions
+export default Questions

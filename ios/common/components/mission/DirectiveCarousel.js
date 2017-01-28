@@ -40,20 +40,14 @@ var styles = StyleSheet.create({
     marginLeft: 2
   },
   thumb: {
-    // paddingTop: 8,
-    // paddingBottom: 5,
     flexDirection: 'column',
-    // alignItems: 'center',
     justifyContent: 'center',
     paddingRight: 10,
     paddingLeft: 10,
-    maxWidth: 140,
-    height: 45,
+    maxWidth: 200,
+    height: 50,
     backgroundColor: '#eee',
     borderRadius: 1,
-    // borderStyle: 'solid',
-    // borderWidth: 1,
-    // borderColor: '#ddd',
     marginRight: 10.5,
   },
   selectedThumb: {
@@ -74,7 +68,8 @@ var styles = StyleSheet.create({
     textAlign: 'left',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginBottom: 5
     // flex: 1
   },
   directiveStatusIcon: {
@@ -113,18 +108,23 @@ class DirectiveCarousel extends Component {
         <TouchableOpacity onPress={() => this.props.onSelectDirective(idx)}
                             style={[styles.thumb, idx === this.props.currentDirectiveIndex ? styles.selectedThumb : null]}
                             key={idx}>
+          <View>
             <Text style={styles.thumbLabel}>
               {indicatorText}
+            </Text>
+            <Text style={styles.thumbLabel}>
               {displayName}
             </Text>
+          </View>
+
       </TouchableOpacity>)
 
     return thumb;
   }
 
   render() {
-    console.log('props of DirectivesCarousel', this.props);
-    
+    // console.log('props of DirectivesCarousel', this.props);
+
     return (
       <View style={styles.container}>
 
