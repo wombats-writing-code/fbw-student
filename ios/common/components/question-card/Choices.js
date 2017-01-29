@@ -1,10 +1,6 @@
 // Choice.js
 
-'use strict';
-
-import React, {
-    Component,
-}  from 'react';
+import React, { Component, }  from 'react';
 import {
   Dimensions,
   ListView, ScrollView,
@@ -16,23 +12,28 @@ var _ = require('lodash');
 var AssessmentTakenQuestionConstants = require('../../constants/AssessmentTakenQuestion');
 var Alphabet = AssessmentTakenQuestionConstants.Alphabet;
 
-var MathWebView = require('../math-webview/MathWebView');
+import MathWebView from '../math-webview/MathWebView';
+import baseStyles from 'fbw-platform-common/styles/base-styles'
 
 let styles = StyleSheet.create({
-  choiceRow: {
+  choice: {
     opacity: .8,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     marginBottom: 0,
-    borderBottomWidth: 3,
+    paddingTop: 4,
+    marginBottom: 9,
+    paddingLeft: 5,
+    borderLeftWidth: 3,
     borderColor: 'transparent'
+  },
+  selectedChoice: {
+    borderColor: baseStyles.appBlueDark,
+    backgroundColor: '#f8f8f8'
   },
   choiceWebViewWrapper: {
     flex: 96
-  },
-  respondedChoice: {
-    backgroundColor: '#e4dfcb',
   },
   respondedChoiceIcon: {
     width: 14,
@@ -40,23 +41,10 @@ let styles = StyleSheet.create({
     marginTop: 1,
     marginRight: 10.5
   },
-  selectedChoiceIndicator: {
-    flex: 2,
-    width: 16,
-    minWidth: 16,
-    maxWidth: 16,
-    marginLeft: 0,
-    marginRight: 10.5,
-    height: 16,
-    maxHeight: 16,
-    borderRadius: 8,
-    backgroundColor: '#324D5C'
-  },
   choiceLabel: {
     width: 18,
     minWidth: 18,
     maxWidth: 18,
-    marginLeft: -7,
     fontWeight: "300",
     color: '#333'
   }
@@ -65,19 +53,8 @@ let styles = StyleSheet.create({
 
 class Choices extends Component {
   renderChoice = (choice, idx) => {
-    // let {h, w} = Dimensions.get('window');
-    // let choiceWebViewWrapperWidth = w - styles.choiceLabel.width - styles.choiceLabel.marginRight -
-    //                               styles.selectedChoiceIndicator.width - styles.selectedChoiceIndicator.marginLeft;
-
-
-    let selectedChoiceStyle = (this.props.selectedChoiceId === choice.id) ? styles.selectedChoiceRow : {};
-
-    let height = this.props.heightByChoice[choice.id] || 14;
-
-    // console.log('height for', choice.id, height);
-
+    // === icon for responded-to choice =====
     let respondedChoiceIcon;
-    // we style it a bit differently if it's a responded-to choice
     if (this.props.responseId && this.props.responseId === choice.id) {
       if (this.props.isResponseCorrect) {
         respondedChoiceIcon = <Image style={styles.respondedChoiceIcon} source={require('fbw-platform-common/assets/responseType--correct@2x.png')} />
@@ -87,26 +64,21 @@ class Choices extends Component {
       }
     }
 
-    let selectedChoiceIndicator, selectedChoiceLabelStyle;
-    if (this.props.selectedChoiceId === choice.id) {
-      // selectedChoiceIndicator = <Image style={styles.selectedChoiceIndicator} source={require('../../assets/selectedChoiceIndicator.png')} />
-      selectedChoiceIndicator = <View style={styles.selectedChoiceIndicator}></View>
-      selectedChoiceLabelStyle = {fontWeight: "700", color: "#324D5C"};
-    }
+    // ==== styling for selected choice ====
+    let selectedChoiceStyle = (this.props.selectedChoiceId == choice.id || this.props.responseId === choice.id) ?
+                              styles.selectedChoice : null;
 
     return (
-      <TouchableWithoutFeedback onPress={() => this.props.onSelectChoice(choice.id, this.props.question.id)} key={choice.id}>
-        <View style={[styles.choiceRow, {height: this.props.heightByChoice[choice.id]}]}>
-          <Text style={[styles.choiceLabel, selectedChoiceLabelStyle]}>
+      <TouchableWithoutFeedback onPress={() => this.props.onSelectChoice(choice.id)} key={choice.id}>
+        <View style={[styles.choice, selectedChoiceStyle]}>
+          <Text style={[styles.choiceLabel]}>
             {Alphabet[idx]}&#x00029;
           </Text>
 
           <View style={[styles.choiceWebViewWrapper]}>
-            <MathWebView accessible={true} content={choice.text} onAdjustHeight={this._adjustChoiceRowHeight}
-            />
+            <MathWebView accessible={true} content={choice.text} onAdjustHeight={this._adjustChoiceRowHeight} />
           </View>
 
-          {selectedChoiceIndicator}
           {respondedChoiceIcon}
         </View>
       </TouchableWithoutFeedback>
@@ -123,9 +95,8 @@ class Choices extends Component {
 
   _adjustChoiceRowHeight= (height, choiceId) => {
     // console.log('calculated height for choice', height);
-    this.props.onSetChoiceHeight({choiceId: height})
+    // this.props.onSetChoiceHeight({choiceId: height})
   }
-
 }
 
-module.exports = Choices;
+export default Choices;

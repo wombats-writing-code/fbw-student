@@ -1,10 +1,6 @@
 // MathWebView
 
-'use strict';
-
-import React, {
-    Component,
-}  from 'react';
+import React, { Component, }  from 'react';
 import {
   Dimensions,
   View,
@@ -15,10 +11,7 @@ import {
 var _ = require('lodash');
 
 var credentials = require('../../credentials');
-var fbwUtils = require('fbw-utils')(credentials);
-// var WrapHTML = fbwUtils.WrapMathjax;
 var wrapHTML = require('../../utilities/wrapHTML');
-var heightCalculate = require('../../utilities/heightCalculate');
 
 var styles = StyleSheet.create({
   webViewStyle: {
@@ -144,4 +137,4 @@ class MathWebView extends Component {
   }
 }
 
-module.exports = MathWebView;
+export default MathWebView

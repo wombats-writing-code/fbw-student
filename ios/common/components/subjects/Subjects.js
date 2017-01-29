@@ -31,7 +31,7 @@ class Subjects extends Component {
   }
 
   render() {
-    console.log('this.props.subjects of Subjects', this.props);
+    // console.log('this.props.subjects of Subjects', this.props);
 
     if (this.props.isGetSubjectsInProgress || !this.props.subjects || !this.props.user.username) {
       return (<View style={styles.container}>

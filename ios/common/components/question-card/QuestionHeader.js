@@ -1,9 +1,5 @@
 
-'use strict';
-
-import React, {
-    Component,
-}  from 'react';
+import React, { Component, }  from 'react';
 import {
   Dimensions, Animated,
   TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity,
@@ -128,7 +124,7 @@ class QuestionHeader extends Component {
         {header}
 
         <TouchableHighlight accessibilityLabel={toggleButtonLabel}
-                            style={styles.showMoreButton} onPress={this.props.onShowMorePress}>
+                            style={styles.showMoreButton} onPress={this.props.onToggleExpand}>
           {showMoreIcon}
         </TouchableHighlight>
 
@@ -216,4 +212,4 @@ class QuestionHeader extends Component {
   }
 }
 
-module.exports = QuestionHeader;
+export default QuestionHeader

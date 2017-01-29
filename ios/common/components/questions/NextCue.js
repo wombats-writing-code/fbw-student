@@ -12,17 +12,16 @@ import {
 import _ from 'lodash';
 
 
-const BASE_STYLES = require('fbw-platform-common/styles/base-styles');
+import BASE_STYLES from 'fbw-platform-common/styles/base-styles';
 
 
 class NextCue extends Component {
 
-
   render() {
     return (
-      <Text>
-        I am a next cue.
-      </Text>
+      <View>
+
+      </View>
     )
   }
 }
