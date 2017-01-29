@@ -11,6 +11,8 @@ import {
   View
 } from "react-native";
 
+const RCTUIManager = require('NativeModules').UIManager;
+
 import _ from 'lodash';
 
 import QuestionCardContainer from 'fbw-platform-common/components/question-card/QuestionCardContainer'
@@ -27,13 +29,24 @@ import BASE_STYLES from 'fbw-platform-common/styles/base-styles';
 
 
 class Questions extends Component {
+  componentDidUpdate(prevProps) {
+    if (prevProps.isInProgressSubmitChoice) {
+      console.log('componentDidUpdate. need to scroll now', prevProps.isInProgressSubmitChoice);
+
+      RCTUIManager.measure(this._scrollView.getInnerViewNode(), (...data) => {
+        console.log(data);
+        this._scrollView.scrollTo({y: data[3], animated: true})
+      });
+    //   // console.log('scroll to', nextCueTop);
+    //   $("html, body").animate({ scrollTop: nextCueTop.offset.top }, 1000);
+    }
+  }
+
+
   renderListRow = (questionItem, sectionId, rowId) => {
     let outcome = _.find(this.props.outcomes, {id: questionItem.learningObjectiveIds[0]});
 
-    // console.log('row', rowId, 'total length', this.props.questions.length, 'questions', this.props.questions);
-
     if (questionItem.responded) {
-      // let hasNextQuestion = (questionItem !== _.last(this.props.questions));
       let nextQuestion = this.props.questions[parseInt(rowId)+1];
 
       let nextOutcome;
@@ -44,12 +57,8 @@ class Questions extends Component {
         nextOutcome = _.find(this.props.outcomes, {id: questionItem.response.confusedLearningObjectiveIds[0]});
       }
 
-      // if (!nextOutcome) {
-      //   console.log('questionItem', questionItem);
-      //   console.log('nextQuestion', nextQuestion);
-      // }
-
-      // AnsweredQuestionCard should be expanded if: 1) it's the only item in the list or 2) it's the last responded item
+      // AnsweredQuestionCard should be expanded if:
+      // 1) it's the only item in the list or 2) it's the last responded item
       let isExpanded = false;
       if (!nextQuestion || !nextQuestion.responded) {
         isExpanded = true;
@@ -60,7 +69,7 @@ class Questions extends Component {
           <QuestionCard question={questionItem} outcome={outcome} isExpanded={isExpanded}/>
           <NextCue isLastTarget={this.props.isLastTarget}
                                response={questionItem.response}
-                               outcome = {outcome}
+                               outcome={outcome}
                                nextQuestion={nextQuestion}
                                nextOutcome={nextOutcome}/>
         </View>
@@ -124,7 +133,7 @@ class Questions extends Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView style={styles.scrollView} ref={component => this._scrollView = component}>
           {infiniteTimeline}
           <ListView
               dataSource={ds.cloneWithRows(this.props.questions)}

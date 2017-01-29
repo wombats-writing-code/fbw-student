@@ -1,9 +1,5 @@
 // QuestionCard.styles.js
-'use strict';
-
-import {
-  StyleSheet,
-} from 'react-native';
+import { StyleSheet, } from 'react-native';
 
 module.exports = StyleSheet.create({
   container: {
@@ -13,26 +9,10 @@ module.exports = StyleSheet.create({
   },
   questionBodyWrapper: {
     paddingLeft: 32,      // because the QuestionHeader has icon of width=20
-    // backgroundColor: '#ff0000'
   },
   rightAnswer: {
     color: '#355e3b',
     textAlign: 'center'
-  },
-  submitButton: {
-    backgroundColor: '#888',
-    borderRadius: 5,
-    marginLeft: 25,
-    padding: 9,
-    marginTop: 9
-  },
-  submitButtonActive: {
-    backgroundColor: '#324D5C'
-  },
-  submitButtonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: "500",
   },
   toggleChoicesButton: {
     backgroundColor: 'green',
@@ -43,6 +23,10 @@ module.exports = StyleSheet.create({
     position: 'absolute',
     right: 0,
     top: -20
+  },
+  solutionCaption: {
+    fontWeight: '500',
+    marginBottom: 4,
   },
   inProgressIndicator: {
     marginTop: 21,

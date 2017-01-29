@@ -16,10 +16,10 @@ import { isTarget } from 'fbw-platform-common/selectors/mission';
 import _ from 'lodash';
 import Choices from './Choices'
 
-var MathWebView = require('../math-webview/MathWebView')
-var QuestionHeader = require('./QuestionHeader');
+import MathWebView from '../math-webview/MathWebView'
+import QuestionHeader from './QuestionHeader'
 
-var styles = require('./QuestionCard.styles');
+let styles = require('./QuestionCard.styles');
 
 const PULSE_TIMER = 1000;
 let PULSE_ACTION = new Animated.Value(0)
@@ -35,52 +35,47 @@ class QuestionCard extends Component {
   }
 
   render() {
-    let submitButtonText;
-    if (!this.props.isInProgressSubmitChoice && this.state.selectedChoiceId) {
-      submitButtonText = <Text style={styles.submitButtonText}>Submit</Text>
-
-    } else if (!this.props.selectedChoiceId && !this.state.selectedChoiceId) {
-      submitButtonText = <Text style={styles.submitButtonText}>Submit</Text>
-
-    } else {
-      submitButtonText = <Text style={styles.submitButtonText}>Working...</Text>
-    }
-
-    let submitButton;
-    if (!this.props.isInProgressSubmitChoice) {
-      submitButton = (
-        <TouchableHighlight onPress={() => this._onSubmitChoice(this.state.selectedChoiceId, this.props.question.id)}
-                                          style={[styles.submitButton, this.state.selectedChoiceId && styles.submitButtonActive]}>
-            {submitButtonText}
-        </TouchableHighlight>);
-    }
-
     // =====
     // this block determines the icon image that should be shown, depending on the question and whether it's been answered
     // ======
     let questionTypeIcon;
     if (isTarget(this.props.question)) {
-      questionTypeIcon = <Image source={require('fbw-platform-common/assets/target-icon@2x.png')} />
+      if (this.props.question.responded && this.props.question.response.isCorrect) {
+        questionTypeIcon = <Image source={require('fbw-platform-common/assets/target-icon--correct@2x.png')} />
+
+      } else if (this.props.question.responded && !this.props.question.response.isCorrect) {
+        questionTypeIcon = <Image source={require('fbw-platform-common/assets/target-icon--incorrect@2x.png')} />
+
+      } else {
+        questionTypeIcon = <Image source={require('fbw-platform-common/assets/target-icon@2x.png')} />
+      }
+
     } else {
-      questionTypeIcon = <Image source={require('fbw-platform-common/assets/waypoint-icon@2x.png')} />
+      if (this.props.question.responded && this.props.question.response.isCorrect) {
+        questionTypeIcon = <Image source={require('fbw-platform-common/assets/waypoint-icon--correct@2x.png')} />
+
+      } else if (this.props.question.responded && !this.props.question.response.isCorrect) {
+        questionTypeIcon = <Image source={require('fbw-platform-common/assets/waypoint-icon--incorrect@2x.png')} />
+
+      } else {
+        questionTypeIcon = <Image source={require('fbw-platform-common/assets/waypoint-icon@2x.png')} />
+      }
     }
 
     // ====
     // determines whether solution should be shown
     // =====
     let solution = (this.props.question.responded && this.state.isExpanded) ?
-                    (<div className="solution">
-                        <p className="bold">Solution</p>
-                        <div className="question-card__body"
-                          dangerouslySetInnerHTML={{__html: this.props.question.response.feedback.text}}>
-                        </div>
-                      </div>) : null;
+                    (<View style={styles.solution}>
+                        <Text style={styles.solutionCaption}>Solution</Text>
+                        <MathWebView content={this.props.question.response.feedback.text} />
+                      </View>) : null;
 
     // ====
     // determines whether choices should be shown
     // =====
     let choices = this.state.isExpanded ?
-          (<Choices onSelectChoice={(choiceId) => this.setState({selectedChoiceId: choiceId})}
+          (<Choices onSelectChoice={(choiceId) => this._onSubmitChoice(choiceId, this.props.question.id)}
                       selectedChoiceId={this.state.selectedChoiceId}
                       choices={this.props.question.choices}
                       responseId={this.props.question.responded ? this.props.question.response.choiceIds[0] : null}
@@ -105,14 +100,14 @@ class QuestionCard extends Component {
         {choices}
         {solution}
       </View>
-
-      {submitButton}
     </View>
     )
   }
 
   _onSubmitChoice = (choiceId, questionId) => {
-    if (!this.props.isInProgressSubmitChoice) {
+    if (!this.props.isInProgressSubmitChoice && !this.props.question.responded) {
+      this.setState({selectedChoiceId: choiceId});
+
       this.props.onSubmitResponse({
         bankId: this.props.bank.id,
         choiceId: choiceId,
@@ -147,7 +142,6 @@ class QuestionCard extends Component {
       }).start();
     }
   }
-
 }
 
-module.exports = QuestionCard;
+export default QuestionCard
