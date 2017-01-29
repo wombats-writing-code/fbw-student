@@ -68,7 +68,7 @@ class QuestionCard extends Component {
     let solution = (this.props.question.responded && this.state.isExpanded) ?
                     (<View style={styles.solution}>
                         <Text style={styles.solutionCaption}>Solution</Text>
-                        <MathWebView content={this.props.question.response.feedback.text} />
+                        <MathWebView content={this.props.question.response.feedback.text || 'Oops. Looks like we are missing a solution for this question. Please inform your teacher!' } />
                       </View>) : null;
 
     // ====

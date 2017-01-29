@@ -30,8 +30,8 @@ import BASE_STYLES from 'fbw-platform-common/styles/base-styles';
 
 class Questions extends Component {
   componentDidUpdate(prevProps) {
-    if (prevProps.isInProgressSubmitChoice) {
-      console.log('componentDidUpdate. need to scroll now', prevProps.isInProgressSubmitChoice);
+    if (this.props.isInProgressSubmitChoice || prevProps.isInProgressSubmitChoice) {
+      console.log('componentDidUpdate. need to scroll now', this.props.isInProgressSubmitChoice);
 
       RCTUIManager.measure(this._scrollView.getInnerViewNode(), (...data) => {
         console.log(data);
