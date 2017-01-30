@@ -9,14 +9,15 @@
   "dependencies": {
     "axios": "^0.15.2",
     "babel-plugin-transform-remove-console": "^6.8.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
     "concurrently": "^3.1.0",
     "es6-promise": "^3.2.1",
     "events": "^1.1.0",
     "fbjs": "^0.8.3",
-    "fbw-platform-common": "^2.1.29",
     "fbw-utils": "^0.2.0",
     "flux": "^2.1.1",
     "keymirror": "^0.1.1",
+    "fbw-platform-common": "2.2.01",
     "lockr": "^0.8.4",
     "lodash": "^4.13.1",
     "moment": "^2.15.1",
@@ -37,7 +38,6 @@
     "valence": "github:wombats-writing-code/valence-sdk-javascript"
   },
   "devDependencies": {
-    "babel-preset-airbnb": "^2.1.1",
     "concurrently": "^3.1.0",
     "flow-bin": "^0.33.0",
     "gulp": "^3.9.1",

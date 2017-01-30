@@ -31,10 +31,10 @@ import BASE_STYLES from 'fbw-platform-common/styles/base-styles';
 class Questions extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.isInProgressSubmitChoice || prevProps.isInProgressSubmitChoice) {
-      console.log('componentDidUpdate. need to scroll now', this.props.isInProgressSubmitChoice);
+      // console.log('componentDidUpdate. need to scroll now', this.props.isInProgressSubmitChoice);
 
       RCTUIManager.measure(this._scrollView.getInnerViewNode(), (...data) => {
-        console.log(data);
+        // console.log(data);
         this._scrollView.scrollTo({y: data[3], animated: true})
       });
     //   // console.log('scroll to', nextCueTop);
