@@ -4,7 +4,7 @@ const AlgebraGuide = (props) => {
   return (
     <div className="guide">
       <section className="splash-banner text-center flex-container align-center justify-center">
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/La-znUNWCxE" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/hTz-B5kg6sg" frameborder="0" allowfullscreen></iframe>
       </section>
       <section className="instructions" id="instructions">
         <div className="row">
