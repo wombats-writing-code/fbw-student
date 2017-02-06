@@ -10,7 +10,7 @@ import LoadingBox from '../../components/LoadingBox'
 import '../../styles/react-spinner.css'
 import './Missions.scss'
 
-import {localDateTime, checkMissionStatus} from 'fbw-platform-common/utilities/time'
+import {checkMissionStatus} from 'fbw-platform-common/utilities/time'
 
 class Missions extends Component {
 
@@ -49,7 +49,7 @@ class Missions extends Component {
     // Let students view past missions, but not submit any choices.
     // TODO: get the subject names from D2L
 
-    let dlLocal = localDateTime(mission.deadline).toDate(),
+    let dlLocal = moment(mission.deadline).toDate(),
       now = new Date(),
       deadlineText = 'Due',
       timeRemaining = (dlLocal - now) / 1000 / 60 / 60 / 24 ;
