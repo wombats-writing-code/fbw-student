@@ -55,10 +55,17 @@ a.breadcrumb__link {
   text-align: left;
 }
 
+.username {
+  font-size: .875rem;
+  margin-bottom: 0;
+  margin-right: 1em;
+  color: #fff;
+}
+
 .logout-button {
   font-size: .875rem;
-  border: 1px solid #eee;
   color: #eee;
+  border: 1px solid #eee;
   border-radius: 3px;
 }
 

@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { IndexLink, Link, browserHistory } from 'react-router'
 import './NavBar.scss'
 
+import {usernameToDisplayName} from 'fbw-platform-common/selectors/login'
+
 class NavBar extends Component {
 
   render() {
@@ -27,6 +29,9 @@ class NavBar extends Component {
 
         {/* <p className="route-title">{this._getTitle(props)}</p> */}
 
+        <p className="username">
+          {usernameToDisplayName(props.user.username)}
+        </p>
         <button className="logout-button" tabIndex="1" onClick={this._logout}>
           Logout
         </button>

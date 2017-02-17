@@ -7,16 +7,16 @@ import './HomeView.scss'
 
 import {usernameToDisplayName} from 'fbw-platform-common/selectors/login'
 
-import MissionsContainer from 'fbw-platform-common/containers/MissionsContainer.js'
-import MissionsComponent from '../../Missions/Missions.js'
-const Missions = MissionsContainer(MissionsComponent)
+import CoursesComponent from './Courses'
+import CoursesContainer from 'fbw-platform-common/components/courses/CoursesContainer'
+const Courses = CoursesContainer(CoursesComponent)
 
 class Home extends Component {
 
   componentDidMount() {
-    if (this.props.bank) {
+    if (this.props.currentCourse) {
       this.props.getMissions({
-        subjectBankId: this.props.bank.id,
+        course: this.props.currentCourse,
         username: this.props.user.username
       })
     } else {
@@ -26,8 +26,6 @@ class Home extends Component {
 
   render() {
 
-    // if (!this.props.user) return null;
-
     let nextActionPrompt;
     if (this.props.missions && this.props.missions.length > 0) {
       nextActionPrompt = (
@@ -35,17 +33,6 @@ class Home extends Component {
             Your next mission is due
             <span> {moment(this.props.missions[0].deadline).format('dddd[,] MMMM D')}</span>.
         </p>
-      )
-    } 
-
-    let navigationLink;
-    if (this.props.isVisitor) {
-      navigationLink = (
-        <Link className="navigation-link" to="/subjects">Go to my Subjects</Link>
-      )
-    } else {
-      navigationLink = (
-        <Link className="navigation-link" to="/missions">See Missions</Link>
       )
     }
 
@@ -58,7 +45,9 @@ class Home extends Component {
             <span className="name"> {usernameToDisplayName(this.props.user.username)}</span>
           </h1>
           {nextActionPrompt}
-          {navigationLink}
+
+          <Courses />
+
         </div>
       </div>
     )

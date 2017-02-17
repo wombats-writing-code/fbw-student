@@ -4,7 +4,7 @@ import Home from './components/Home'
 import { getMissions } from 'fbw-platform-common/reducers/Mission/getMissions'
 import { selectOpenMission } from 'fbw-platform-common/reducers/Mission/selectOpenMission'
 import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/selectClosedMission'
-import {getEnrolledSubject} from 'fbw-platform-common/selectors/bank'
+import {getCurrentCourse} from 'fbw-platform-common/selectors/course'
 import {getUser} from 'fbw-platform-common/selectors/'
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isVisitor: state.login.isVisitor,
     user: getUser(state),
-    bank: getEnrolledSubject(state),
+    currentCourse: getCurrentCourse(state),
     missions: state.mission ? state.mission.missions : null,
     isGetMissionsInProgress: state.mission ? state.mission.isGetMissionsInProgress : false,
   }

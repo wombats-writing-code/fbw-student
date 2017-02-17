@@ -8,7 +8,6 @@ import Home from './Home'
 import LoginRoute from './Login'
 import Mission from './Mission'
 import MissionsRoute from './Missions'
-import SubjectsRoute from './Subjects'
 import D2LCallbackRoute from './D2LCallback'
 import LogOutSuccessRoute from './LogOutSuccess'
 import GuideRoute from './Guide'
@@ -24,7 +23,6 @@ export const createRoutes = (store) => {
     indexRoute  : Home,
     childRoutes : [
       LoginRoute(store),
-      SubjectsRoute(store),
       MissionsRoute(store),
       D2LCallbackRoute(store),
       LogOutSuccessRoute(store),
