@@ -28,14 +28,14 @@ export default (initialState = {}) => {
   enhancers.push(persistState(null, {
     slicer: paths => state => {
       let subset = {
-        bank: state.bank,
-        subject: state.subject,
+        course: state.course,
         result: _.omit(state.result, ['phaseIResults', 'phaseIIResults']),
         editMission: {},
         mapping: state.mapping,
         mission: _.assign({}, state.mission, {
           isGetMissionsInProgress: false,
-          missions: null
+          isGetMissionInProgress: false,
+          isInProgressSubmitChoice: false
         }),
         login: state.login,
         location: state.location,

@@ -15,34 +15,17 @@ import {checkMissionStatus} from 'fbw-platform-common/utilities/time'
 class Missions extends Component {
 
   componentDidMount () {
-    // @luwenh, need to check for privateBankId here, just to make sure
-    // that it's set up properly on the server. Otherwise this will call
-    // and the middleman will error out (because the privateBankAlias doesn't
-    // exist yet)
-    if (this.props.bank && !this.props.isGetPrivateBankIdInProgress) {
-      this.props.getMissions({
-        subjectBankId: this.props.bank.id,      // @Cole: need to fix this for the d2l case;
-        username: this.props.user.username
-      })
-    }
+    this.props.getMissions({
+      course: this.props.course,
+      username: this.props.user.username
+    })
 
-    // assume if modules not there, neither are outcomes or relationships
-    // We need to kick this off here for D2L students.
-    // if (!this.props.mapping.modules) {
-      this.props.getMapping();
-    // }
-  }
-
-  componentDidUpdate() {
-    if (this.props.bank &&
-        !this.props.isGetMissionsInProgress &&
-        !this.props.isGetPrivateBankIdInProgress &&
-        !this.props.missions) {
-      this.props.getMissions({
-        subjectBankId: this.props.bank.id,
-        username: this.props.user.username
-      })
-    }
+    // get mapping happens when Missions load
+    this.props.getMapping({
+      course: this.props.course,
+      username: this.props.user.username,
+      entityTypes: 'outcome'
+    });
   }
 
   renderRow = (mission, sectionId, rowId) => {
@@ -67,10 +50,10 @@ class Missions extends Component {
     // console.log('missions mission', mission)
 
     let missionTypeIconSource
-    if (mission.genusTypeId === 'assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU') {
+    if (mission.type === 'PHASE_I_MISSION_TYPE') {
       missionTypeIconSource = require('fbw-platform-common/assets/phase-1-icon@2x.png')
 
-    } else if (mission.genusTypeId === 'assessment-genus%3Afbw-in-class-mission%40ODL.MIT.EDU') {
+    } else if (mission.type === 'PHASE_II_MISSION_TYPE') {
       missionTypeIconSource = require('fbw-platform-common/assets/phase-2-icon@2x.png');
 
     } else {
@@ -85,7 +68,7 @@ class Missions extends Component {
 
             <div className="missions-list__item__body">
               <p className="row-title mission-name">
-                {mission.displayName.text}
+                {mission.displayName}
               </p>
               <p className="row-subtitle mission-deadline" style={deadlineStyle} >
                 {deadlineText}: {dlLocal.getMonth() + 1}-{dlLocal.getDate()}-{dlLocal.getFullYear()}
@@ -109,15 +92,24 @@ class Missions extends Component {
     let nonFutureMissions = _.filter(this.props.missions, (mission) => {
       return checkMissionStatus(mission) !== 'future'
     })
-    let currentMissions = nonFutureMissions && nonFutureMissions.length > 0 ?
-                ( <ul className="row-list">
-                    {_.map(nonFutureMissions, this.renderRow)}
-                  </ul> ) : null;
+
+    let currentMissions;
+    if (nonFutureMissions && nonFutureMissions.length > 0) {
+      currentMissions = (<ul className="row-list">
+                          {_.map(nonFutureMissions, this.renderRow)}
+                        </ul>)
+    } else if (nonFutureMissions && nonFutureMissions.length === 0) {
+      currentMissions = (<div className="empty-state">
+                  Your instructor has not opened any Missions yet. Check back later!
+                </div>)
+    }
+
+
 
     // console.log('currentMissions', currentMissions);
 
     return (
-      <div className="medium-8 medium-centered large-6 large-centered columns">
+      <div className="medium-9 medium-centered large-6 large-centered columns">
           {currentMissions}
           {loadingBox}
       </div>)
@@ -126,14 +118,13 @@ class Missions extends Component {
   _onSelectMission (mission) {
     let missionStatus = checkMissionStatus(mission);
     let username = this.props.user.username;
-    let bankId = this.props.bank.id;
 
     if (missionStatus === 'over') {
-      this.props.onSelectClosedMission({mission, bankId, username})
+      this.props.onSelectClosedMission({mission, course: this.props.course, username})
     } else {
-      this.props.onSelectOpenMission({mission, bankId, username})
+      this.props.onSelectOpenMission({mission, course: this.props.course, username})
     }
-    browserHistory.push(`/missions/${slug(mission.displayName.text)}`)
+    browserHistory.push(`/missions/${slug(mission.displayName)}`)
   }
 
 }
