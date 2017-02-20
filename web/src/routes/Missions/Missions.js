@@ -17,20 +17,19 @@ class Missions extends Component {
   componentDidMount () {
     this.props.getMissions({
       course: this.props.course,
-      username: this.props.user.username
+      user: this.props.user
     })
 
     // get mapping happens when Missions load
     this.props.getMapping({
       course: this.props.course,
-      username: this.props.user.username,
-      entityTypes: 'outcome'
+      user: this.props.user,
+      entityTypes: ['outcome']
     });
   }
 
   renderRow = (mission, sectionId, rowId) => {
     // Let students view past missions, but not submit any choices.
-    // TODO: get the subject names from D2L
 
     let dlLocal = moment(mission.deadline).toDate(),
       now = new Date(),
@@ -83,7 +82,7 @@ class Missions extends Component {
   render() {
 
     let loadingBox;
-    if (this.props.isGetMissionsInProgress || this.props.isGetPrivateBankIdInProgress) {
+    if (this.props.isGetMissionsInProgress) {
       loadingBox =  <LoadingBox type="enter-active"/>
     } else {
       loadingBox =  <LoadingBox type="enter"/>
@@ -98,7 +97,7 @@ class Missions extends Component {
       currentMissions = (<ul className="row-list">
                           {_.map(nonFutureMissions, this.renderRow)}
                         </ul>)
-    } else if (nonFutureMissions && nonFutureMissions.length === 0) {
+    } else if (!this.props.isGetMissionsInProgress && nonFutureMissions && nonFutureMissions.length === 0) {
       currentMissions = (<div className="empty-state">
                   Your instructor has not opened any Missions yet. Check back later!
                 </div>)
@@ -117,12 +116,11 @@ class Missions extends Component {
 
   _onSelectMission (mission) {
     let missionStatus = checkMissionStatus(mission);
-    let username = this.props.user.username;
 
     if (missionStatus === 'over') {
-      this.props.onSelectClosedMission({mission, course: this.props.course, username})
+      this.props.onSelectClosedMission({mission, course: this.props.course, user: this.props.user})
     } else {
-      this.props.onSelectOpenMission({mission, course: this.props.course, username})
+      this.props.onSelectOpenMission({mission, course: this.props.course, user: this.props.user})
     }
     browserHistory.push(`/missions/${slug(mission.displayName)}`)
   }
