@@ -5,7 +5,7 @@ import moment from 'moment'
 
 import './HomeView.scss'
 
-import {usernameToDisplayName} from 'fbw-platform-common/selectors/login'
+import {getD2LDisplayName} from 'fbw-platform-common/selectors/login'
 
 import CoursesComponent from './Courses'
 import CoursesContainer from 'fbw-platform-common/components/courses/CoursesContainer'
@@ -17,7 +17,7 @@ class Home extends Component {
     if (this.props.currentCourse) {
       this.props.getMissions({
         course: this.props.currentCourse,
-        username: this.props.user.username
+        user: this.props.user
       })
     } else {
       // browserHistory.push('/login')
@@ -25,6 +25,8 @@ class Home extends Component {
   }
 
   render() {
+
+    if (!this.props.user) return null;
 
     let nextActionPrompt;
     if (this.props.missions && this.props.missions.length > 0) {
@@ -42,7 +44,7 @@ class Home extends Component {
         <div className="columns">
           <h1 className="home__greeting">
             <span className="greeting">Welcome</span>,
-            <span className="name"> {usernameToDisplayName(this.props.user.username)}</span>
+            <span className="name"> {getD2LDisplayName(this.props.user)}</span>
           </h1>
           {nextActionPrompt}
 

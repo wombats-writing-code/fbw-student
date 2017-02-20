@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { IndexLink, Link, browserHistory } from 'react-router'
 import './NavBar.scss'
 
-import {usernameToDisplayName} from 'fbw-platform-common/selectors/login'
+import {getD2LDisplayName} from 'fbw-platform-common/selectors/login'
 
 class NavBar extends Component {
 
@@ -10,7 +10,11 @@ class NavBar extends Component {
     let props = this.props;
     let breadcrumbs = this._getPath(this.props);
 
-    // console.log('props in NavBar', props)
+    if (!props.user) {
+      return null;
+    }
+
+    console.log('props in NavBar', props)
 
     return (
       <div className="nav-bar flex-container align-center space-between">
@@ -30,7 +34,7 @@ class NavBar extends Component {
         {/* <p className="route-title">{this._getTitle(props)}</p> */}
 
         <p className="username">
-          {usernameToDisplayName(props.user.username)}
+          {getD2LDisplayName(props.user)}
         </p>
         <button className="logout-button" tabIndex="1" onClick={this._logout}>
           Logout
