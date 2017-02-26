@@ -5,12 +5,13 @@ import { browserHistory } from 'react-router'
 import slug from 'slug'
 
 import Spinner from 'react-spinner'
-import LoadingBox from '../../components/LoadingBox'
+import LoadingBox from 'fbw-platform-common/components/loading-box/web/'
 
 import '../../styles/react-spinner.css'
 import './Missions.scss'
 
 import {checkMissionStatus} from 'fbw-platform-common/utilities/time'
+import {missionConfig} from 'fbw-platform-common/reducers/Mission'
 
 class Missions extends Component {
 
@@ -30,37 +31,21 @@ class Missions extends Component {
 
   renderRow = (mission, sectionId, rowId) => {
     // Let students view past missions, but not submit any choices.
-
-    let dlLocal = moment(mission.deadline).toDate(),
-      now = new Date(),
-      deadlineText = 'Due',
-      timeRemaining = (dlLocal - now) / 1000 / 60 / 60 / 24 ;
-
-    let deadlineStyle;
-    if (timeRemaining <= 1 && timeRemaining > 0) {
-      deadlineStyle = {color: '#DB5142'};
-
-    } else if (timeRemaining <= 0) {
-      deadlineText = 'Closed';
-      deadlineStyle = {color: '#888'}
-    }
-
-    // console.log(dlLocal)
     // console.log('missions mission', mission)
 
     let missionTypeIconSource
-    if (mission.type === 'PHASE_I_MISSION_TYPE') {
+    if (mission.type === missionConfig.PHASE_I_MISSION_TYPE) {
       missionTypeIconSource = require('fbw-platform-common/assets/phase-1-icon@2x.png')
 
-    } else if (mission.type === 'PHASE_II_MISSION_TYPE') {
+    } else if (mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
       missionTypeIconSource = require('fbw-platform-common/assets/phase-2-icon@2x.png');
 
-    } else {
-      console.error('uh oh. could not recognize genusTypeId in Missions.js');
     }
 
+    let activeStyle = mission === this.props.currentMission ? 'isSelected' : null;
+
     return (
-      <li className="missions-list__item" key={sectionId} onClick={() => this._onSelectMission(mission)}>
+      <li className={`missions-list__item ${activeStyle}`} key={sectionId} onClick={() => this._onSelectMission(mission)}>
         <button className="clickable-row__button" >
           <div className="flex-container align-top">
             <img className="mission-type-icon" src={missionTypeIconSource} />
@@ -68,9 +53,12 @@ class Missions extends Component {
             <div className="missions-list__item__body">
               <p className="row-title mission-name">
                 {mission.displayName}
+                {mission.description ? ' | ' + mission.description : null}
               </p>
-              <p className="row-subtitle mission-deadline" style={deadlineStyle} >
-                {deadlineText}: {dlLocal.getMonth() + 1}-{dlLocal.getDate()}-{dlLocal.getFullYear()}
+              <p className="row-subtitle mission-datetime" >
+                <span className="">{moment(mission.startTime).format('ddd, MMM D [at] ha')}</span>
+                 &nbsp; &mdash; &nbsp;
+                <span className="bold">{moment(mission.deadline).format('ddd, MMM D [at] ha')} </span>
               </p>
             </div>
           </div>
