@@ -31,10 +31,11 @@ export default (initialState = {}) => {
     slicer: paths => state => {
       let subset = {
         course: state.course,
-        result: _.omit(state.result, ['phaseIResults', 'phaseIIResults']),
+        result: _.omit(state.result, ['resultsByMission', 'isGetResultsInProgress']),
         editMission: {},
         mapping: state.mapping,
         mission: _.assign({}, state.mission, {
+          isUpdateMissionInProgress: false,
           isGetMissionsInProgress: false,
           isGetMissionInProgress: false,
           isInProgressSubmitChoice: false

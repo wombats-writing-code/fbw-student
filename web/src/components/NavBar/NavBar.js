@@ -14,7 +14,7 @@ class NavBar extends Component {
       return null;
     }
 
-    console.log('props in NavBar', props)
+    // console.log('props in NavBar', props)
 
     return (
       <div className="nav-bar flex-container align-center space-between">
