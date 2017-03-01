@@ -50,21 +50,7 @@ class NavBar extends Component {
     }];
 
     switch(props.route.path) {
-      case 'subjects':
-        breadcrumbs.push({
-          path: '/subjects',
-          name: 'Subjects'
-        });
-        break;
-
       case 'missions':
-        if (props.isVisitor) {
-          breadcrumbs.push({
-            path: '/subjects',
-            name: 'Subjects'
-          });
-        }
-
         breadcrumbs = _.concat(breadcrumbs, {
           path: '/missions',
           name: 'Missions'
@@ -73,13 +59,6 @@ class NavBar extends Component {
         break;
 
       case '/missions/:missionName':
-        if (props.isVisitor) {
-          breadcrumbs.push({
-            path: '/subjects',
-            name: 'Subjects'
-          });
-        }
-
         breadcrumbs = _.concat(breadcrumbs, {
           path: '/missions',
           name: 'Missions'

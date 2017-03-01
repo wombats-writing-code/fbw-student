@@ -8,7 +8,7 @@ import {getCurrentCourse} from 'fbw-platform-common/selectors/course'
 import {getUser} from 'fbw-platform-common/selectors/'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state in Home', state);
+  // console.log('state in HomeContainer', state);
 
   return {
     isVisitor: state.login.isVisitor,
