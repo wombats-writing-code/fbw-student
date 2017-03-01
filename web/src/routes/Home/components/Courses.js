@@ -15,9 +15,9 @@ class Courses extends Component {
 
   renderRow = (course, index) => {
       return (
-        <li className="clickable-row" key={index} >
+        <li className="clickable-row " key={index} >
           <button className="clickable-row__button" tabIndex={index + 1} onClick={() => this._onSelectCourse(course)}>
-            <p className="row-title">{course.Code}</p>
+            <p className="row-title text-left">{course.Code}</p>
             <p className="row-subtitle">{course.description}</p>
           </button>
         </li>
@@ -39,9 +39,13 @@ class Courses extends Component {
                     </div>
                   </div> );
 
-    return <div className="medium-8 medium-centered large-6 large-centered columns">
-        {currentCourses}
-    </div>;
+    return (
+      <div className="row">
+        <div className="medium-6 columns no-left-padding">
+            {currentCourses}
+        </div>
+      </div>
+    )
   }
 
   _onSelectCourse(course) {

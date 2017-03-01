@@ -6,7 +6,7 @@ import slug from 'slug'
 
 import Spinner from 'react-spinner'
 import LoadingBox from 'fbw-platform-common/components/loading-box/web/'
-
+import EmptyState from 'fbw-platform-common/components/empty-state/web/'
 import '../../styles/react-spinner.css'
 import './Missions.scss'
 
@@ -86,9 +86,7 @@ class Missions extends Component {
                           {_.map(nonFutureMissions, this.renderRow)}
                         </ul>)
     } else if (!this.props.isGetMissionsInProgress && nonFutureMissions && nonFutureMissions.length === 0) {
-      currentMissions = (<div className="empty-state">
-                  Your instructor has not opened any Missions yet. Check back later!
-                </div>)
+      currentMissions = EmptyState('Your instructor has not opened any Missions yet. Check back later!')
     }
 
 

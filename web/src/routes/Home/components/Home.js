@@ -32,8 +32,7 @@ class Home extends Component {
     if (this.props.missions && this.props.missions.length > 0) {
       nextActionPrompt = (
         <p className="next-action-prompt">
-            Your next mission is due
-            <span> {moment(this.props.missions[0].deadline).format('dddd[,] MMMM D')}</span>.
+          Go to your class to begin.
         </p>
       )
     }
