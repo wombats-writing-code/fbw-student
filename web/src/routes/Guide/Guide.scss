@@ -3,6 +3,7 @@
 
 iframe {
   border: none;
+  max-height: 80vh;
 }
 
 .button-bar .button:not(:last-child) {
@@ -53,7 +54,14 @@ iframe {
 	top: .4em;
 }
 
-
 .instruction img {
 	margin-bottom: 1.5em;
+}
+
+a.fbw-app-link {
+  text-decoration: underline;
+}
+
+a.fbw-app-link:hover {
+  color: $app-blue-2;
 }
