@@ -4,7 +4,7 @@ const AlgebraGuide = (props) => {
   return (
     <div className="guide">
       <section className="splash-banner text-center flex-container align-center justify-center">
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/hTz-B5kg6sg" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/hTz-B5kg6sg" frameBorder="0" allowFullScreen></iframe>
       </section>
       <section className="instructions" id="instructions">
         <div className="row">
@@ -13,7 +13,7 @@ const AlgebraGuide = (props) => {
         <div className="row">
           <ol className="instruction-list">
             <li className="instruction">
-              <p>Go to <a href="http://fbw-student.mit.edu" target="_blank">fbw-student.mit.edu</a>.</p>
+              <p>Go to <a className="fbw-app-link" href="http://fbw-student.mit.edu" target="_blank">fbw-student.mit.edu</a>.</p>
             </li>
             <li className="instruction">
               <p>Click on the <b>Arapahoe MyACC</b> button</p>
