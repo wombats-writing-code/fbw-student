@@ -10,7 +10,7 @@ import LoadingBox from '../../components/LoadingBox'
 import '../../styles/react-spinner.css'
 import './Missions.scss'
 
-import {checkMissionStatus} from 'fbw-platform-common/utilities/time'
+import {checkMissionStatus} from 'adaptive-common/utilities/time'
 
 class Missions extends Component {
 
@@ -68,10 +68,10 @@ class Missions extends Component {
 
     let missionTypeIconSource
     if (mission.genusTypeId === 'assessment-genus%3Afbw-homework-mission%40ODL.MIT.EDU') {
-      missionTypeIconSource = require('fbw-platform-common/assets/phase-1-icon@2x.png')
+      missionTypeIconSource = require('adaptive-common/assets/phase-1-icon@2x.png')
 
     } else if (mission.genusTypeId === 'assessment-genus%3Afbw-in-class-mission%40ODL.MIT.EDU') {
-      missionTypeIconSource = require('fbw-platform-common/assets/phase-2-icon@2x.png');
+      missionTypeIconSource = require('adaptive-common/assets/phase-2-icon@2x.png');
 
     } else {
       console.error('uh oh. could not recognize genusTypeId in Missions.js');

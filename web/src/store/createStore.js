@@ -5,7 +5,7 @@ import persistState from 'redux-localstorage'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
-import logger from 'fbw-platform-common/logger'
+import logger from 'adaptive-common/logger'
 
 export default (initialState = {}) => {
   // ======================================================

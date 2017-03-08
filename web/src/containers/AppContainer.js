@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { browserHistory, Router } from 'react-router'
 import { Provider } from 'react-redux'
-import {isLoggedIn} from 'fbw-platform-common/selectors'
+import { isLoggedIn } from 'adaptive-common/selectors'
 
 class AppContainer extends Component {
   static propTypes = {

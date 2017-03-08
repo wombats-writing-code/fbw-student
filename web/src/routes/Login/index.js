@@ -1,5 +1,5 @@
-import LoginComponent from 'fbw-platform-common/components/login/web/Login';
-import LoginContainer from 'fbw-platform-common/components/login/LoginContainer'
+import LoginComponent from 'adaptive-common/components/login/web/Login';
+import LoginContainer from 'adaptive-common/components/login/LoginContainer'
 import credentials from '../../d2lcredentials'
 const Login = LoginContainer(LoginComponent, credentials)
 

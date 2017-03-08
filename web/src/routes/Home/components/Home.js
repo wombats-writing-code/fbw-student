@@ -5,9 +5,9 @@ import moment from 'moment'
 
 import './HomeView.scss'
 
-import {usernameToDisplayName} from 'fbw-platform-common/selectors/login'
+import {usernameToDisplayName} from 'adaptive-common/selectors/login'
 
-import MissionsContainer from 'fbw-platform-common/containers/MissionsContainer.js'
+import MissionsContainer from 'adaptive-common/containers/MissionsContainer.js'
 import MissionsComponent from '../../Missions/Missions.js'
 const Missions = MissionsContainer(MissionsComponent)
 
@@ -36,7 +36,7 @@ class Home extends Component {
             <span> {moment(this.props.missions[0].deadline).format('dddd[,] MMMM D')}</span>.
         </p>
       )
-    } 
+    }
 
     let navigationLink;
     if (this.props.isVisitor) {

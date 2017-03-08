@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import locationReducer from './location'
-import commonReducers from 'fbw-platform-common/reducers'
+import commonReducers from 'adaptive-common/reducers'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({

@@ -20,8 +20,8 @@
 //   }
 // })
 
-import MissionComponent from 'fbw-platform-common/components/mission/web/Mission'
-import MissionContainer from  'fbw-platform-common/components/mission/MissionContainer'
+import MissionComponent from 'adaptive-common/components/mission/web/Mission'
+import MissionContainer from  'adaptive-common/components/mission/MissionContainer'
 //
 // // Sync route definition
 // export default {

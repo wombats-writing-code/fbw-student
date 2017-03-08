@@ -1,11 +1,11 @@
 
 import { connect } from 'react-redux'
 import Home from './components/Home'
-import { getMissions } from 'fbw-platform-common/reducers/Mission/getMissions'
-import { selectOpenMission } from 'fbw-platform-common/reducers/Mission/selectOpenMission'
-import { selectClosedMission } from 'fbw-platform-common/reducers/Mission/selectClosedMission'
-import {getEnrolledSubject} from 'fbw-platform-common/selectors/bank'
-import {getUser} from 'fbw-platform-common/selectors/'
+import { getMissions } from 'adaptive-common/reducers/Mission/getMissions'
+import { selectOpenMission } from 'adaptive-common/reducers/Mission/selectOpenMission'
+import { selectClosedMission } from 'adaptive-common/reducers/Mission/selectClosedMission'
+import {getEnrolledSubject} from 'adaptive-common/selectors/bank'
+import {getUser} from 'adaptive-common/selectors/'
 
 const mapStateToProps = (state, ownProps) => {
   console.log('state in Home', state);

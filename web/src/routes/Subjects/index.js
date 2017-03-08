@@ -10,7 +10,7 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
-      const SubjectsFactory = require('fbw-platform-common/containers/SubjectsContainer').default
+      const SubjectsFactory = require('adaptive-common/containers/SubjectsContainer').default
 
       /*  Return getComponent   */
       cb(null, SubjectsFactory(SubjectsComponent))
