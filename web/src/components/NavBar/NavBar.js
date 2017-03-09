@@ -31,14 +31,14 @@ class NavBar extends Component {
           })}
         </ul>
 
-        {/* <p className="route-title">{this._getTitle(props)}</p> */}
-
-        <p className="username">
-          {getD2LDisplayName(props.user)}
-        </p>
-        <button className="logout-button" tabIndex="1" onClick={this._logout}>
-          Logout
-        </button>
+        <div className="nav-bar__app-control flex-container align-center space-between">
+          <p className="username">
+            {getD2LDisplayName(props.user)}
+          </p>
+          <button className="logout-button" tabIndex="1" onClick={this._logout}>
+            Logout
+          </button>
+        </div>
 
       </div>
     )
