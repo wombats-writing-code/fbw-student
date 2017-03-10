@@ -134,7 +134,7 @@ if (!__TEST__) {
 webpackConfig.module.loaders = [{
   test    : /\.(js|jsx)$/,
   // exclude : /node_modules/,
-  include: [/fbw-platform-common/, paths.client()],
+  include: [/adaptive-common/, paths.client()],
   // include: paths.client(),
   loader  : 'babel',
   query   : config.compiler_babel
