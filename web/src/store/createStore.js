@@ -29,23 +29,27 @@ export default (initialState = {}) => {
   // copy state to local storage
   enhancers.push(persistState(null, {
     slicer: paths => state => {
-      let subset = {
-        course: state.course,
-        result: _.omit(state.result, ['resultsByMission', 'isGetResultsInProgress']),
-        editMission: {},
-        mapping: state.mapping,
-        mission: _.assign({}, state.mission, {
-          isUpdateMissionInProgress: false,
-          isGetMissionsInProgress: false,
-          isGetMissionInProgress: false,
-          isInProgressSubmitChoice: false
-        }),
-        login: state.login,
-        location: state.location,
-        view: state.view
-      };
+      if (state && state.login && state.login.isLoggedIn) {
+        let subset = {
+          course: state.course,
+          result: _.omit(state.result, ['resultsByMission', 'isGetResultsInProgress']),
+          editMission: {},
+          mapping: state.mapping,
+          mission: _.assign({}, state.mission, {
+            isUpdateMissionInProgress: false,
+            isGetMissionsInProgress: false,
+            isGetMissionInProgress: false,
+            isInProgressSubmitChoice: false
+          }),
+          login: state.login,
+          location: state.location,
+          view: state.view
+        };
 
-      return subset
+        return subset
+      }
+
+      return {}
     }
   }))
 
