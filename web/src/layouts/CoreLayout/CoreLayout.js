@@ -1,8 +1,7 @@
 import '../../styles/foundation.min.css'
 
 import React from 'react'
-import Header from '../../components/Header'
-import NavBar from '../../components/NavBar'
+import NavBar from 'fbw-platform-common/components/nav-bar/web'
 
 import './CoreLayout.scss'
 import '../../styles/core.scss'
