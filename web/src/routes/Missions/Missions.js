@@ -41,6 +41,8 @@ class Missions extends Component {
 
     }
 
+    let missionStatus = checkMissionStatus(mission);
+
     let activeStyle = mission === this.props.currentMission ? 'isSelected' : null;
 
     return (
@@ -56,8 +58,14 @@ class Missions extends Component {
               </p>
               <p className="row-subtitle mission-datetime" >
                 <span className="">{moment(mission.startTime).format('ddd, MMM D [at] ha')}</span>
-                 &nbsp; &mdash; &nbsp;
+                 &#8202; &mdash; &#8202;
                 <span className="bold">{moment(mission.deadline).format('ddd, MMM D [at] ha')} </span>
+                &ensp;
+                <span>
+                  {missionStatus === 'over' ? '(Deadline is past)' : null}
+                </span>
+              </p>
+              <p className="row-subtitle mission-datetime">
               </p>
             </div>
           </div>
