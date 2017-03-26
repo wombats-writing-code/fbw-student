@@ -31,6 +31,10 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
 }
 
+.flex-container.wrap {
+  flex-wrap: wrap;
+}
+
 .flex-container.flex-column {
   flex-direction: column;
 }
