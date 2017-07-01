@@ -51,7 +51,7 @@ class NextCue extends Component {
         cueText = <Text style={styles.cueText}>Good job! You've reached the end of the route. Please try another Target question.</Text>
 
       } else if (this.props.isLastTarget) {
-        cueText = <Text style={styles.cueText}>Good job! You've finished all the questions in this goal.</Text>
+        cueText = <Text style={styles.cueText}>You've reached the end of this goal. Review questions again or move on to the next goal.</Text>
       }
 
     } else {
