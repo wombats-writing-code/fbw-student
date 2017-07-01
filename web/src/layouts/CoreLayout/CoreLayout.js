@@ -8,12 +8,24 @@ import '../../styles/core.scss'
 
 import '../../styles/common.css'
 
+import OutcomeVisual from '../../components/OutcomeVisual'
+import FeedbackWidget from '../../components/FeedbackWidget'
+
 export const CoreLayout = ({ children }) => {
+  let feedbackWidget;
+  feedbackWidget = (
+    <FeedbackWidget />
+  )
+
+  let outcomeVisual = <OutcomeVisual />
+
   return (
     <div className='container text-center' style={{height: '100%', width: '100%'}}>
       <NavBar {...children.props}/>
       <div className='core-layout__viewport'>
         {children}
+        {feedbackWidget}
+        {/* {outcomeVisual} */}
       </div>
     </div>
   )
