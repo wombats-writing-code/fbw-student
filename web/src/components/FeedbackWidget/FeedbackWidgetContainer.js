@@ -33,7 +33,7 @@ const selectTarget = state => {
 }
 
 const selectRouteFeedback = (state) => {
-  if (state.mission.currentMission) {
+  if (state.mission.currentMission && state.mission.currentTarget) {
     let goal = state.mission.currentMission.goals[state.mission.currentDirectiveIndex];
 
     return _.find(state.feedback.feedbacks, {mission: state.mission.currentMission.id, goal, target: state.mission.currentTarget.id})

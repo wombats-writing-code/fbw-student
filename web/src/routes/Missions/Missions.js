@@ -12,6 +12,10 @@ import './Missions.scss'
 import {checkMissionStatus} from 'fbw-platform-common/utilities/time'
 import {missionConfig} from 'fbw-platform-common/reducers/Mission'
 
+const missionOverStyle = {
+  opacity: .6
+}
+
 class Missions extends Component {
 
   componentDidMount () {
@@ -49,9 +53,9 @@ class Missions extends Component {
       <li className={`missions-list__item ${activeStyle}`} key={sectionId} onClick={() => this._onSelectMission(mission)}>
         <button className="clickable-row__button" >
           <div className="flex-container align-top">
-            <img className="mission-type-icon" src={missionTypeIconSource} />
+            <img className="mission-type-icon" src={missionTypeIconSource}  style={missionStatus === 'over' ? missionOverStyle : null}/>
 
-            <div className="missions-list__item__body">
+            <div className="missions-list__item__body" style={missionStatus === 'over' ? missionOverStyle : null}>
               <p className="row-title mission-name">
                 {mission.displayName}
                 {mission.description ? ' | ' + mission.description : null}
@@ -59,7 +63,7 @@ class Missions extends Component {
               <p className="row-subtitle mission-datetime" >
                 <span className="">{moment(mission.startTime).format('ddd, MMM D [at] ha')}</span>
                  &#8202; &mdash; &#8202;
-                <span className="bold">{moment(mission.deadline).format('ddd, MMM D [at] ha')} </span>
+                <span className={missionStatus === 'over' ? null : 'bold'}>{moment(mission.deadline).format('ddd, MMM D [at] ha')} </span>
                 &ensp;
                 <span>
                   {missionStatus === 'over' ? '(Deadline is past)' : null}
