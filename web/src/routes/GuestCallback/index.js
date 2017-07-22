@@ -1,4 +1,11 @@
-import GuestCallback from 'fbw-platform-common/components/guest-callback/GuestCallbackContainer'
+import credentials from '../../d2lcredentials'
+import GuestCallbackContainer from 'fbw-platform-common/components/guest-callback/GuestCallbackContainer'
+import GuestCallbackComponent from 'fbw-platform-common/components/guest-callback/web/GuestCallback'
+
+// import GuestCallback from 'fbw-platform-common/components/guest-callback/GuestCallbackContainer'
+const GuestCallback = GuestCallbackContainer(GuestCallbackComponent, credentials);
+
+console.log(GuestCallback)
 
 export default (store) => ({
   path : 'guest-callback',
