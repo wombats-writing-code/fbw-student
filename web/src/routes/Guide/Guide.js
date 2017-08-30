@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import DocumentTitle from 'react-document-title'
 
 import AlgebraGuide from './AlgebraGuide'
 import AccountingGuide from './AccountingGuide'
@@ -24,15 +25,17 @@ class Guide extends Component {
     }
 
     return (
-      <div>
-        <div className="row button-bar">
-          <button className={this.state.subjectName === 'Algebra' ? "button is-active" : "button"}
-                  onClick={() => this.setState({subjectName: 'Algebra'})}>Algebra guide</button>
-          <button className={this.state.subjectName === 'Accounting' ? "button is-active": "button"} 
-                  onClick={() => this.setState({subjectName: 'Accounting'})}>Accounting guide</button>
+      <DocumentTitle title="Fly-by-Wire Help Guides">
+        <div>
+          <div className="row button-bar">
+            <button className={this.state.subjectName === 'Algebra' ? "button is-active" : "button"}
+                    onClick={() => this.setState({subjectName: 'Algebra'})}>Algebra guide</button>
+            <button className={this.state.subjectName === 'Accounting' ? "button is-active": "button"}
+                    onClick={() => this.setState({subjectName: 'Accounting'})}>Accounting guide</button>
+          </div>
+          {docs}
         </div>
-        {docs}
-      </div>
+      </DocumentTitle>
     )
   }
 }
