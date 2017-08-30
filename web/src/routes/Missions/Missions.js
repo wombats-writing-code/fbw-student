@@ -3,6 +3,7 @@ import moment from 'moment'
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import slug from 'slug'
+import DocumentTitle from 'react-document-title'
 
 import LoadingBox from 'fbw-platform-common/components/loading-box/web/'
 import EmptyState from 'fbw-platform-common/components/empty-state/web/'
@@ -105,10 +106,12 @@ class Missions extends Component {
     // console.log('currentMissions', currentMissions);
 
     return (
-      <div className="medium-9 medium-centered large-6 large-centered columns">
-        {currentMissions}
-        {loadingBox}
-      </div>)
+      <DocumentTitle title={`${this.props.course.Name}: Missions`}>
+        <div className="medium-9 medium-centered large-6 large-centered columns">
+          {currentMissions}
+          {loadingBox}
+        </div>
+      </DocumentTitle>)
   }
 
   _onSelectMission (mission) {

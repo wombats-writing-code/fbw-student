@@ -1,11 +1,9 @@
-import React, {Component} from 'react'
-import {Link, browserHistory} from 'react-router'
-import DuckImage from '../assets/Duck.jpg'
-import moment from 'moment'
+import React, { Component } from 'react'
+import DocumentTitle from 'react-document-title'
 
 import './HomeView.scss'
 
-import {getD2LDisplayName} from 'fbw-platform-common/selectors/login'
+import { getD2LDisplayName } from 'fbw-platform-common/selectors/login'
 
 import CoursesComponent from './Courses'
 import CoursesContainer from 'fbw-platform-common/components/courses/CoursesContainer'
@@ -20,21 +18,23 @@ class Home extends Component {
     if (!this.props.user) return null;
 
     return (
-      <div className="home row">
-        <div className="columns">
-          <h1 className="home__greeting">
-            <span className="greeting">Welcome</span>,
-            <span className="name"> {getD2LDisplayName(this.props.user)}</span>
-          </h1>
+      <DocumentTitle title="Home">
+        <div className="home row">
+          <div className="columns">
+            <h1 className="home__greeting">
+              <span className="greeting">Welcome</span>,
+              <span className="name"> {getD2LDisplayName(this.props.user)}</span>
+            </h1>
 
-          <p className="next-action-prompt">
-            Go to your class to begin.
-          </p>
+            <p className="next-action-prompt">
+              Go to your class to begin.
+            </p>
 
-          <Courses />
+            <Courses />
 
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     )
   }
 }
