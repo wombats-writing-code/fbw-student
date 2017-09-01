@@ -107,10 +107,10 @@ class Missions extends Component {
 
     return (
       <DocumentTitle title={`${this.props.course.Name}: Missions`}>
-        <div className="medium-9 medium-centered large-6 large-centered columns">
+        <main id="main-content" className="medium-9 medium-centered large-6 large-centered columns">
           {currentMissions}
           {loadingBox}
-        </div>
+        </main>
       </DocumentTitle>)
   }
 

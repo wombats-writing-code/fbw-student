@@ -40,11 +40,11 @@ class Courses extends Component {
                   </div> );
 
     return (
-      <div className="row">
+      <main id="main-content" className="row">
         <div className="medium-6 columns no-left-padding">
           {currentCourses}
         </div>
-      </div>
+      </main>
     )
   }
 

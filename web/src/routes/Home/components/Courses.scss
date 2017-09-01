@@ -1,6 +1,14 @@
 
+@import '../../../styles/base';
 
 .course {
   border: none;
   box-shadow: 0 0 1px 1px rgba(#000, .3);
+}
+
+button.clickable-row__button:focus {
+  outline-color: $app-red-dark;
+  outline-offset: 0.25rem;
+  outline-style: dashed;
+  outline-width: 3px;
 }
