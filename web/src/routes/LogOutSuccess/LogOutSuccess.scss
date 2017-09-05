@@ -30,3 +30,10 @@
   opacity: .8;
   color: $app-red;
 }
+
+.acc-link:focus {
+  outline-offset: 0.5rem;
+  outline-color: $app-red-dark;
+  outline-width: 3px;
+  outline-style: dashed;
+}
