@@ -65,3 +65,71 @@ a.fbw-app-link {
 a.fbw-app-link:hover {
   color: $app-blue-2;
 }
+
+/* TRANSCRIPT TOGGLE, borrowed and modified from CLIx */
+.toggle-me {
+  position: absolute;
+  top: -30px;
+  right: 0px;
+  // display: block;
+  width: 170px;
+  height: 30px;
+  margin: 0;
+  padding: 2px 16px 2px;
+  background: $app-blue-2;
+  border-radius: 5px 0 0 0;
+  margin-right: 0rem;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.toggle-me:hover {
+  background-color: #666;
+  background: $app-blue-dark;
+}
+
+.toggle-me__pressed {
+  background: $app-blue-dark;
+}
+
+.transcript  {
+  width: 0;
+  max-height: 400px;
+  padding: 0 0 10px;
+  border-bottom: 2px solid #ddd;
+  opacity: 0;
+  overflow-y: scroll;
+  transition: all 1s ease-in-out;
+}
+
+.transcript__expanded  {
+  width: 50%;
+  opacity: 1;
+}
+
+.splash-banner {
+  position: relative;
+}
+
+.arrow-toggle {
+  width: 15px;
+  color: #fff;
+  fill: $app-blue-2;
+  transform: rotate(90deg);
+  transition: transform 1s;
+}
+
+.arrow-toggle__expanded {
+  transform: rotate(270deg);
+}
+
+.transcript-button-label {
+  margin-right: 0.5rem;
+}
+
+.transcript p {
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

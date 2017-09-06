@@ -1,10 +1,92 @@
 import React, { Component } from 'react'
 
 const AlgebraGuide = (props) => {
+  let transcript = <article
+    aria-expanded={props.transcriptExpanded}
+    className="transcript"></article>
+
+  if (props.transcriptExpanded) {
+    transcript = (
+      <article
+        aria-expanded={props.transcriptExpanded}
+        className="transcript transcript__expanded">
+        <div className="row">
+          <h3 className="columns">Video Transcript</h3>
+        </div>
+        <div className="row">
+          <p>To access your Fly-by-Wire assignments, open up a web browser
+            (Chrome, Safari, or FireFox is fine), and go to fbw-student.mit.edu.</p>
+          <p>Click on the Arapahoe "MyACC" button, and enter your MyACC credentials.</p>
+          <p>Once you log in, you'll be redirected to your Fly-by-Wire dashboard.</p>
+          <p>I see that I have a mission due on Tuesday, January 31.</p>
+          <p>If I click on "See Missions", I'll see all the missions that are waiting
+            for me.</p>
+          <p>Because my first accounting exam is coming up, I have a test 1 review mission.</p>
+          <p>A mission consists of goals.</p>
+          <p>The goals are found along the top of your screen.</p>
+          <p>A goal is a learning objective from the unit.</p>
+          <p>When you click on a goal, you will see some number of target questions.</p>
+          <p>These icons below the goals are targets.</p>
+          <p>If you click on one of them, you'll be given a practice problem that
+            aligns with the goal.</p>
+          <p>So I'm going to select this goal, and I see that there are two target
+            questions associated with that goal, and I'm going to click on one of them.</p>
+          <p>Do your best to answer the target questions.</p>
+          <p>Write down all your work as you attempt the problems.</p>
+          <p>So I'm going to select answer choice b and click submit,
+            and I see that I got the question correct.</p>
+          <p>Fly-by-Wire tells me "good job, you've reached the end of the route.
+            Please try another target question."</p>
+          <p>So if I go back up to the top I see that this target has turned green, and this
+            target up here is now marked as achieved.</p>
+          <p>So I can select another target question and try to answer this one.</p>
+          <p>This time I'm going to select answer choice c, which is incorrect.</p>
+          <p>Fly-by-Wire also tells me that I might need to
+            review a more fundamental learning outcome and gives me an easier question
+            that is aligned with this learning objective that you see right here.</p>
+          <p>The idea is that if I get this easier question right, it might help me answer the next
+            target question correctly.</p>
+          <p>Fly-by-Wire also shows me a solution to the original target question,
+            so that I can review that solution and compare it to my own and see
+            where I might have made a mistake.</p>
+          <p>Now I'm going to try to answer the waypoint question.</p>
+          <p>I'm going to select answer choice C.</p>
+          <p>Click submit, and see that I got it correct.</p>
+          <p>Fly-by-Wire tells me "good job, you've reached the
+            end of the route. Please try another target question."</p>
+          <p>In this case, I've completed all the target questions for this given goal,
+            and so I'm going to go on to another goal and work on those questions.</p>
+          <p>So you'll continue this process until you try all of the questions in your mission.</p>
+          <p>Once you've completed all of your target questions in the mission,
+            Fly-by-Wire will generate a personalized
+            Phase 2 mission that includes questions like the ones that you
+            missed on your Phase 1 mission.</p>
+          <p>Fly-by-Wire saves your work automatically,
+            so if you need to leave your mission and come back to it later, just be
+            sure to log out of Fly-by-Wire and also log out of the D2L portal.</p>
+        </div>
+      </article>
+    )
+  }
+
   return (
     <div className="guide">
       <section className="splash-banner text-center flex-container align-center justify-center">
         <iframe width="100%" height="400" src="https://www.youtube.com/embed/zmFWxZcsxoY" frameborder="0" allowfullscreen></iframe>
+        <button
+          aria-label={props.transcriptExpanded ? "Hide transcript" : "Show transcript"}
+          aria-pressed={props.transcriptExpanded}
+          type="checkbox"
+          id="transcript-toggle"
+          onClick={props.onClickToggleTranscript}
+          className={props.transcriptExpanded ? "toggle-me toggle-me__pressed" : "toggle-me"}>
+          <span className="transcript-button-label">Transcript</span>
+          <img
+            aria-hidden
+            className={props.transcriptExpanded ? "arrow-toggle arrow-toggle__expanded": "arrow-toggle"}
+            src={require('fbw-platform-common/assets/show-more--down@2x.png')} />
+        </button>
+        {transcript}
       </section>
       <section className="instructions" id="instructions">
         <div className="row">

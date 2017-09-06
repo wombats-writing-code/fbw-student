@@ -12,16 +12,23 @@ class Guide extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subjectName: ''
+      subjectName: '',
+      transcriptExpanded: false
     }
   }
 
-  render() {
+  render () {
     let docs;
     if (this.state.subjectName === 'Algebra') {
-      docs = <AlgebraGuide/>
+      docs = <AlgebraGuide
+        transcriptExpanded={this.state.transcriptExpanded}
+        onClickToggleTranscript={this._onClickToggleTranscript}
+      />
     } else if (this.state.subjectName === 'Accounting') {
-      docs = <AccountingGuide/>
+      docs = <AccountingGuide
+        transcriptExpanded={this.state.transcriptExpanded}
+        onClickToggleTranscript={this._onClickToggleTranscript}
+      />
     }
 
     return (
@@ -37,6 +44,10 @@ class Guide extends Component {
         </div>
       </DocumentTitle>
     )
+  }
+
+  _onClickToggleTranscript = () => {
+    this.setState({ transcriptExpanded: !this.state.transcriptExpanded })
   }
 }
 
