@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import slug from 'slug'
 import DocumentTitle from 'react-document-title'
+import { LiveMessage } from 'react-aria-live'
 
 import LoadingBox from 'fbw-platform-common/components/loading-box/web/'
 import EmptyState from 'fbw-platform-common/components/empty-state/web/'
@@ -108,6 +109,12 @@ class Missions extends Component {
     return (
       <DocumentTitle title={`${this.props.course.Name}: Missions`}>
         <main id="main-content" className="medium-9 medium-centered large-6 large-centered columns">
+          <LiveMessage message={`missions for ${this.props.course.Name}`} aria-live="polite" />
+          <h1 className="missions-heading">Missions for {this.props.course.Name}</h1>
+          <div className="mission-instructions-wrapper">
+            <p className="mission-instruction">Select a closed mission (deadline is past) to review your work.</p>
+            <p className="mission-instruction">Select an open mission to work on the assignment.</p>
+          </div>
           {currentMissions}
           {loadingBox}
         </main>
