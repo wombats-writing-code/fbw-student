@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import DocumentTitle from 'react-document-title'
+import { LiveMessage } from 'react-aria-live'
 
 import AlgebraGuide from './AlgebraGuide'
 import AccountingGuide from './AccountingGuide'
@@ -34,6 +35,7 @@ class Guide extends Component {
     return (
       <DocumentTitle title="Fly-by-Wire Help Guides">
         <div>
+          <LiveMessage message="Fly-by-Wire help guides" aria-live="polite" />
           <div className="row button-bar">
             <button className={this.state.subjectName === 'Algebra' ? "button is-active" : "button"}
                     onClick={() => this.setState({subjectName: 'Algebra'})}>Algebra guide</button>

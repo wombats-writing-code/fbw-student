@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
+import { LiveMessage } from 'react-aria-live'
 
 import './HomeView.scss'
 
@@ -20,6 +21,7 @@ class Home extends Component {
     return (
       <DocumentTitle title="Home">
         <div className="home row">
+          <LiveMessage message="Fly-by-wire home view" aria-live="polite" />
           <div className="columns">
             <h1 className="home__greeting">
               <span className="greeting">Welcome</span>,
