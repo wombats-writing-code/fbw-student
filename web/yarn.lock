@@ -2750,9 +2750,9 @@ fbjs@^0.8.4, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-fbw-platform-common@^3.2.26:
-  version "3.2.26"
-  resolved "https://registry.yarnpkg.com/fbw-platform-common/-/fbw-platform-common-3.2.26.tgz#40f6704ad709126ac2180e972703c331bffffa19"
+fbw-platform-common@^3.2.34:
+  version "3.2.34"
+  resolved "https://registry.yarnpkg.com/fbw-platform-common/-/fbw-platform-common-3.2.34.tgz#3e24c13147110503cde1378e61b48552852110d6"
   dependencies:
     axios "^0.15.2"
     babel-core "^6.1.21"
@@ -2787,6 +2787,7 @@ fbw-platform-common@^3.2.26:
     react-document-title "^2.0.3"
     react-dom "^15.4.2"
     react-modal "^2.3.2"
+    react-progressbar "^15.4.1"
     react-redux "^4.4.5"
     react-router "3"
     react-spinner "^0.2.6"
@@ -5709,7 +5710,7 @@ react-dom-factories@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.1.tgz#c50692ac5ff1adb39d86dfe6dbe3485dacf58455"
 
-react-dom@^15.0.0, react-dom@^15.4.2:
+react-dom@^15.0.0, react-dom@^15.4.2, react-dom@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
   dependencies:
@@ -5756,6 +5757,14 @@ react-portal@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.1.0.tgz#865c44fb72a1da106c649206936559ce891ee899"
   dependencies:
     prop-types "^15.5.8"
+
+react-progressbar@^15.4.1:
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/react-progressbar/-/react-progressbar-15.4.1.tgz#86a68138320193a51f8661273120357af8e58e75"
+  dependencies:
+    prop-types "^15.5.10"
+    react "^15.6.1"
+    react-dom "^15.6.1"
 
 react-proxy@^1.1.7:
   version "1.1.8"
@@ -5812,7 +5821,7 @@ react-transform-hmr@^1.0.4:
     global "^4.3.0"
     react-proxy "^1.1.7"
 
-react@^15.0.0, react@^15.4.2:
+react@^15.0.0, react@^15.4.2, react@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
   dependencies:
