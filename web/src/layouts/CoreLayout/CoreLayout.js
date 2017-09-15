@@ -9,31 +9,25 @@ import '../../styles/core.scss'
 
 import '../../styles/common.css'
 
-import OutcomeVisual from '../../components/OutcomeVisual'
 import FeedbackWidget from '../../components/FeedbackWidget'
 
 export const CoreLayout = ({ children }) => {
-  let feedbackWidget;
-  feedbackWidget = (
+  const feedbackWidget = (
     <FeedbackWidget />
   )
 
-  let outcomeVisual = <OutcomeVisual />
-
   return (
-    <div className='container text-center' style={{height: '100%', width: '100%'}}>
+    <div className='container text-center' style={{ height: '100%', width: '100%' }}>
       <LiveAnnouncer>
-        <NavBar {...children.props}/>
+        <NavBar {...children.props} />
         <div className='core-layout__viewport'>
           {children}
           {feedbackWidget}
-          {/* {outcomeVisual} */}
         </div>
       </LiveAnnouncer>
     </div>
   )
 }
-
 
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired
