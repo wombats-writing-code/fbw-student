@@ -13,6 +13,9 @@ const Courses = CoursesContainer(CoursesComponent)
 class Home extends Component {
 
   componentDidMount() {
+    if (this.props.user) {
+      this.div.focus();  
+    }
   }
 
   render() {
@@ -20,7 +23,10 @@ class Home extends Component {
 
     return (
       <DocumentTitle title="Home">
-        <div className="home row">
+        <div
+          tabIndex={-1}
+          ref={(div) => { this.div = div }}
+          className="home row">
           <LiveMessage message="Fly-by-wire home view" aria-live="polite" />
           <div className="columns">
             <h1 className="home__greeting">

@@ -11,11 +11,11 @@ import EmptyState from 'fbw-platform-common/components/empty-state/web/'
 import '../../styles/react-spinner.css'
 import './Missions.scss'
 
-import {checkMissionStatus} from 'fbw-platform-common/utilities/time'
-import {missionConfig} from 'fbw-platform-common/reducers/Mission'
+import { checkMissionStatus } from 'fbw-platform-common/utilities/time'
+import { missionConfig } from 'fbw-platform-common/reducers/Mission'
 
 const missionOverStyle = {
-  opacity: .6
+  opacity: 0.6
 }
 
 class Missions extends Component {
@@ -32,6 +32,8 @@ class Missions extends Component {
       user: this.props.user,
       entityTypes: ['outcome']
     });
+
+    this.main.focus();
   }
 
   renderRow = (mission, sectionId, rowId) => {
@@ -102,13 +104,13 @@ class Missions extends Component {
       currentMissions = EmptyState('Your instructor has not opened any Missions yet. Check back later!')
     }
 
-
-
-    // console.log('currentMissions', currentMissions);
-
     return (
       <DocumentTitle title={`${this.props.course.Name}: Missions`}>
-        <main id="main-content" className="medium-9 medium-centered large-6 large-centered columns">
+        <main
+          id="main-content"
+          tabIndex={-1}
+          ref={(main) => { this.main = main }}
+          className="medium-9 medium-centered large-6 large-centered columns">
           <LiveMessage message={`missions for ${this.props.course.Name}`} aria-live="polite" />
           <h1 className="missions-heading">Missions for {this.props.course.Name}</h1>
           <div className="mission-instructions-wrapper">
