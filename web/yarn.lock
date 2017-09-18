@@ -2750,9 +2750,9 @@ fbjs@^0.8.4, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-fbw-platform-common@^3.2.39:
-  version "3.2.39"
-  resolved "https://registry.yarnpkg.com/fbw-platform-common/-/fbw-platform-common-3.2.39.tgz#40f8f7fd670fafae88768c0d9f126f7655d1b678"
+fbw-platform-common@^3.2.40:
+  version "3.2.40"
+  resolved "https://registry.yarnpkg.com/fbw-platform-common/-/fbw-platform-common-3.2.40.tgz#9d35da77b8d23379d62afd3f2775c98f043cbf1a"
   dependencies:
     axios "^0.15.2"
     babel-core "^6.1.21"
