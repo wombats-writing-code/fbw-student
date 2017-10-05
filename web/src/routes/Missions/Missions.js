@@ -65,9 +65,9 @@ class Missions extends Component {
                 {mission.description ? ' | ' + mission.description : null}
               </p>
               <p className="row-subtitle mission-datetime" >
-                <span className="">{moment(mission.startTime).format('ddd, MMM D [at] ha')}</span>
+                <span className="">{moment(mission.startTime).format('ddd, MMM D [at] h:mm a')}</span>
                  &#8202; &mdash; &#8202;
-                <span className={missionStatus === 'over' ? null : 'bold'}>{moment(mission.deadline).format('ddd, MMM D [at] ha')} </span>
+                <span className={missionStatus === 'over' ? null : 'bold'}>{moment(mission.deadline).format('ddd, MMM D [at] h:mm a')} </span>
                 &ensp;
                 <span>
                   {missionStatus === 'over' ? '(Deadline is past)' : null}
