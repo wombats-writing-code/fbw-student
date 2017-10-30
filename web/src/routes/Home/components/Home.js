@@ -4,10 +4,10 @@ import { LiveMessage } from 'react-aria-live'
 
 import './HomeView.scss'
 
-import { getD2LDisplayName } from 'fbw-platform-common/selectors/login'
+import { getD2LDisplayName } from '@wombats-writing-code/fbw-platform-common/selectors/login'
 
 import CoursesComponent from './Courses'
-import CoursesContainer from 'fbw-platform-common/components/courses/CoursesContainer'
+import CoursesContainer from '@wombats-writing-code/fbw-platform-common/components/courses/CoursesContainer'
 const Courses = CoursesContainer(CoursesComponent)
 
 class Home extends Component {

@@ -4,10 +4,10 @@ import { browserHistory } from 'react-router'
 import persistState from 'redux-localstorage'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
-import {getD2LUserIdentifer} from 'fbw-platform-common/selectors/login'
+import {getD2LUserIdentifer} from '@wombats-writing-code/fbw-platform-common/selectors/login'
 import axios from 'axios'
 
-import logger from 'fbw-platform-common/logger'
+import logger from '@wombats-writing-code/fbw-platform-common/logger'
 
 export default (initialState = {}) => {
   // ======================================================
@@ -19,12 +19,12 @@ export default (initialState = {}) => {
   // Store Enhancers
   // ======================================================
   const enhancers = []
-  if (__DEV__) {
-    const devToolsExtension = window.devToolsExtension
-    if (typeof devToolsExtension === 'function') {
-      enhancers.push(devToolsExtension())
-    }
-  }
+  // if (__DEV__) {
+  //   const devToolsExtension = window.devToolsExtension
+  //   if (typeof devToolsExtension === 'function') {
+  //     enhancers.push(devToolsExtension())
+  //   }
+  // }
 
   // copy state to local storage
   enhancers.push(persistState(null, {

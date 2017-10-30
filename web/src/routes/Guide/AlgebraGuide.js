@@ -84,7 +84,7 @@ const AlgebraGuide = (props) => {
           <img
             aria-hidden
             className={props.transcriptExpanded ? "arrow-toggle arrow-toggle__expanded": "arrow-toggle"}
-            src={require('fbw-platform-common/assets/show-more--down@2x.png')} />
+            src={require('@wombats-writing-code/fbw-platform-common/assets/show-more--down@2x.png')} />
         </button>
         {transcript}
       </section>

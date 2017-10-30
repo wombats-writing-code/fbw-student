@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { browserHistory, Router } from 'react-router'
 import { Provider } from 'react-redux'
-import {isLoggedIn} from 'fbw-platform-common/selectors'
-import {getD2LUserIdentifer} from 'fbw-platform-common/selectors/login'
+import {isLoggedIn} from '@wombats-writing-code/fbw-platform-common/selectors'
+import {getD2LUserIdentifer} from '@wombats-writing-code/fbw-platform-common/selectors/login'
 import axios from 'axios'
 
 class AppContainer extends Component {

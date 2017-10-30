@@ -1,6 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
-import { getDomain } from 'fbw-platform-common/utilities'
+import { getDomain } from '@wombats-writing-code/fbw-platform-common/utilities'
 import {GET_FEEDBACK_OPTIMISTIC, GET_FEEDBACK_SUCCESS} from './getFeedback'
 import {SUBMIT_FEEDBACK_OPTIMISTIC, SUBMIT_FEEDBACK_SUCCESS} from './submitFeedback'
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
-import { getDomain } from 'fbw-platform-common/utilities'
+import { getDomain } from '@wombats-writing-code/fbw-platform-common/utilities'
 
 export const SUBMIT_FEEDBACK_OPTIMISTIC = 'SUBMIT_FEEDBACK_OPTIMISTIC'
 export const SUBMIT_FEEDBACK_SUCCESS = 'SUBMIT_FEEDBACK_SUCCESS'

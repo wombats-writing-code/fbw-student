@@ -10,7 +10,7 @@
 //     require.ensure([], (require) => {
 //       /*  Webpack - use require callback to define
 //           dependencies for bundling   */
-//       const MissionFactory = require('fbw-platform-common/containers/MissionContainer').default
+//       const MissionFactory = require('@wombats-writing-code/fbw-platform-common/containers/MissionContainer').default
 //
 //       /*  Return getComponent   */
 //       cb(null, MissionFactory(MissionComponent))
@@ -20,8 +20,8 @@
 //   }
 // })
 
-import MissionComponent from 'fbw-platform-common/components/mission/web/Mission'
-import MissionContainer from  'fbw-platform-common/components/mission/MissionContainer'
+import MissionComponent from '@wombats-writing-code/fbw-platform-common/components/mission/web/Mission'
+import MissionContainer from  '@wombats-writing-code/fbw-platform-common/components/mission/MissionContainer'
 //
 // // Sync route definition
 // export default {

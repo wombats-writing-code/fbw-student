@@ -1,4 +1,4 @@
-// import LogOutSuccessContainer from 'fbw-platform-common/components/d2l-callback/LogOutSuccessContainer'
+// import LogOutSuccessContainer from '@wombats-writing-code/fbw-platform-common/components/d2l-callback/LogOutSuccessContainer'
 import LogOutSuccess from './LogOutSuccess'
 // const LogOutSuccess = LogOutSuccessContainer(LogOutSuccessComponent, credentials);
 
