@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import {getUser} from 'fbw-platform-common/selectors'
-import {getRouteQuestions} from 'fbw-platform-common/selectors/mission'
+import {getUser} from '@wombats-writing-code/fbw-platform-common/selectors'
+import {getRouteQuestions} from '@wombats-writing-code/fbw-platform-common/selectors/mission'
 import {submitFeedback} from '../../store/feedback/submitFeedback'
 import {getFeedback} from '../../store/feedback/getFeedback'
 import component from './FeedbackWidget'

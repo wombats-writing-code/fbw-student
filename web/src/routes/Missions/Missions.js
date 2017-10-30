@@ -6,13 +6,13 @@ import slug from 'slug'
 import DocumentTitle from 'react-document-title'
 import { LiveMessage } from 'react-aria-live'
 
-import LoadingBox from 'fbw-platform-common/components/loading-box/web/'
-import EmptyState from 'fbw-platform-common/components/empty-state/web/'
+import LoadingBox from '@wombats-writing-code/fbw-platform-common/components/loading-box/web/'
+import EmptyState from '@wombats-writing-code/fbw-platform-common/components/empty-state/web/'
 import '../../styles/react-spinner.css'
 import './Missions.scss'
 
-import { checkMissionStatus } from 'fbw-platform-common/utilities/time'
-import { missionConfig } from 'fbw-platform-common/reducers/Mission'
+import { checkMissionStatus } from '@wombats-writing-code/fbw-platform-common/utilities/time'
+import { missionConfig } from '@wombats-writing-code/fbw-platform-common/reducers/Mission'
 
 const missionOverStyle = {
   opacity: 0.6
@@ -42,10 +42,10 @@ class Missions extends Component {
 
     let missionTypeIconSource
     if (mission.type === missionConfig.PHASE_I_MISSION_TYPE) {
-      missionTypeIconSource = require('fbw-platform-common/assets/phase-1-icon@2x.png')
+      missionTypeIconSource = require('@wombats-writing-code/fbw-platform-common/assets/phase-1-icon@2x.png')
 
     } else if (mission.type === missionConfig.PHASE_II_MISSION_TYPE) {
-      missionTypeIconSource = require('fbw-platform-common/assets/phase-2-icon@2x.png');
+      missionTypeIconSource = require('@wombats-writing-code/fbw-platform-common/assets/phase-2-icon@2x.png');
 
     }
 
