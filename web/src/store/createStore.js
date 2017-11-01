@@ -19,12 +19,12 @@ export default (initialState = {}) => {
   // Store Enhancers
   // ======================================================
   const enhancers = []
-  // if (__DEV__) {
-  //   const devToolsExtension = window.devToolsExtension
-  //   if (typeof devToolsExtension === 'function') {
-  //     enhancers.push(devToolsExtension())
-  //   }
-  // }
+  if (__DEV__) {
+    const devToolsExtension = window.devToolsExtension
+    if (typeof devToolsExtension === 'function') {
+      enhancers.push(devToolsExtension())
+    }
+  }
 
   // copy state to local storage
   enhancers.push(persistState(null, {
