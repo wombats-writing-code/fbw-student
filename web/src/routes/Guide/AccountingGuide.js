@@ -15,55 +15,74 @@ const AlgebraGuide = (props) => {
         </div>
         <div className="row">
           <p>To access your Fly-by-Wire assignments, open up a web browser
-            (Chrome, Safari, or FireFox is fine), and go to fbw-student.mit.edu.</p>
-          <p>Click on the Arapahoe "MyACC" button, and enter your MyACC credentials.</p>
+            (Chrome, Safari, or FireFox are fine), and go to fbw-student.mit.edu.</p>
+          <p>Click on the "myACC" Arapahoe button, and enter your myACC credentials.</p>
           <p>Once you log in, you'll be redirected to your Fly-by-Wire dashboard.</p>
-          <p>I see that I have a mission due on Tuesday, January 31.</p>
-          <p>If I click on "See Missions", I'll see all the missions that are waiting
-            for me.</p>
-          <p>Because my first accounting exam is coming up, I have a test 1 review mission.</p>
-          <p>A mission consists of goals.</p>
-          <p>The goals are found along the top of your screen.</p>
-          <p>A goal is a learning objective from the unit.</p>
-          <p>When you click on a goal, you will see some number of target questions.</p>
-          <p>These icons below the goals are targets.</p>
-          <p>If you click on one of them, you'll be given a practice problem that
-            aligns with the goal.</p>
-          <p>So I'm going to select this goal, and I see that there are two target
-            questions associated with that goal, and I'm going to click on one of them.</p>
+          <p>There you'll see a list of your classes, with your section number on them.</p>
+          <p>So if you pretend this is an accounting one.</p>
+          <p>You click it, and then you'll see your list of missions.</p>
+          <p>I have one here that I'll go into.</p>
+          <p>You'll see that at the very top of the mission is a progress bar,
+            that tells you there are eight questions in the mission that you need to do.</p>
+          <p>And then there is a list of goals.</p>
+          <p>Each of these goals maps to a learning objective from your unit.</p>
+          <p>Within the goals, you can see these target questions.</p>
+          <p>When I click a different goal, I'll see a list of different target
+            questions that address this learning outcome.</p>
+          <p>Each of the goals also has a list of the number of unfinished
+            target questions within that goal.</p>
+          <p>Let me click one.</p>
+          <p>You can see these two target questions.</p>
           <p>Do your best to answer the target questions.</p>
           <p>Write down all your work as you attempt the problems.</p>
-          <p>So I'm going to select answer choice b and click submit,
-            and I see that I got the question correct.</p>
-          <p>Fly-by-Wire tells me "good job, you've reached the end of the route.
-            Please try another target question."</p>
-          <p>So if I go back up to the top I see that this target has turned green, and this
-            target up here is now marked as achieved.</p>
-          <p>So I can select another target question and try to answer this one.</p>
-          <p>This time I'm going to select answer choice c, which is incorrect.</p>
-          <p>Fly-by-Wire also tells me that I might need to
-            review a more fundamental learning outcome and gives me an easier question
-            that is aligned with this learning objective that you see right here.</p>
-          <p>The idea is that if I get this easier question right, it might help me answer the next
-            target question correctly.</p>
-          <p>Fly-by-Wire also shows me a solution to the original target question,
-            so that I can review that solution and compare it to my own and see
-            where I might have made a mistake.</p>
-          <p>Now I'm going to try to answer the waypoint question.</p>
-          <p>I'm going to select answer choice C.</p>
-          <p>Click submit, and see that I got it correct.</p>
-          <p>Fly-by-Wire tells me "good job, you've reached the
-            end of the route. Please try another target question."</p>
-          <p>In this case, I've completed all the target questions for this given goal,
-            and so I'm going to go on to another goal and work on those questions.</p>
-          <p>So you'll continue this process until you try all of the questions in your mission.</p>
+          <p>For this question, calculate accounts on the balance sheet, I'm
+            going to pick .... hm, let's see here.</p>
+          <p>Which one of these do I think is correct.</p>
+          <p>Let's try this one.</p>
+          <p>The first one.</p>
+          <p>Woohoo!</p>
+          <p>I've gotten that correct.</p>
+          <p>You'll see there is a checkmark.</p>
+          <p>There is a solution.</p>
+          <p>If I want to go through the worked solution and compare it to my work.</p>
+          <p>The progress bar has updated.</p>
+          <p>I have finished one of the eight questions.</p>
+          <p>And the number of unfinished questions in this goal has gone down to one.</p>
+          <p>You'll also see that there is an "Achieved" icon here for that target question.</p>
+          <p>So I can then move on to another target question.</p>
+          <p>Same goal.</p>
+          <p>If I pick a different answer, submit.</p>
+          <p>I see that this time I got it wrong.</p>
+          <p>There is a worked solution if I'd like to understand where I
+            maybe made a misstep.</p>
+          <p>Fly-by-Wire will then generate a waypoint question, which is a
+            more fundamental learning outcome.</p>
+          <p>And it is a slightly easier question.</p>
+          <p>This one is calculate total equity.</p>
+          <p>The idea is that if I get this easier question right, it might
+            help me answer additional target quesitons correctly the next time.</p>
+          <p>So let's see.</p>
+          <p>I will try to answer this one correctly.</p>
+          <p>I got that waypoint question correct.</p>
+          <p>And it will bring me back to the original target question.</p>
+          <p>I have another chance to answer this correctly.</p>
+          <p>I'll do my best to answer this correctly this time.</p>
+          <p>I have the target question correct, and when I go back to the top,
+            I now have two out of my eight targets finished.</p>
+          <p>I have a "Tried" badge on this target question, and I have a
+            "Tried" on the goal.</p>
+          <p>So I know I've done all the questions for that goal.</p>
+          <p>So you'll continue this process until you try all of the questions
+            in your mission.</p>
           <p>Once you've completed all of your target questions in the mission,
             Fly-by-Wire will generate a personalized
-            Phase 2 mission that includes questions like the ones that you
+            Phase 2 mission for you that includes questions similar to the ones that you
             missed on your Phase 1 mission.</p>
           <p>Fly-by-Wire saves your work automatically,
-            so if you need to leave your mission and come back to it later, just be
-            sure to log out of Fly-by-Wire and also log out of the D2L portal.</p>
+            so if you need to leave your mission at any time and come back to it later, you can.
+            Just be sure to log out of Fly-by-Wire up here at the top right. And you
+            will also have to log out of your ACC D2L portal direclty on the D2L page,
+            also here on the top-right.</p>
         </div>
       </article>
     )
@@ -72,7 +91,7 @@ const AlgebraGuide = (props) => {
   return (
     <div className="guide">
       <section className="splash-banner text-center flex-container align-center justify-center">
-        <iframe width="100%" height="400" src="https://www.youtube.com/embed/zmFWxZcsxoY" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/SHQgG7R9FRw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <button
           aria-label={props.transcriptExpanded ? "Hide transcript" : "Show transcript"}
           aria-pressed={props.transcriptExpanded}
