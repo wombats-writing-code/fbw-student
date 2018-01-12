@@ -15,7 +15,9 @@ class AppContainer extends Component {
     const store = this.props.store;
     const state = store.getState();
 
-    if (window.location.pathname.indexOf('logout-success') > -1 || window.location.pathname.indexOf('guide') > -1) {
+    if (window.location.pathname.indexOf('logout-success') > -1 ||
+      window.location.pathname.indexOf('guide') > -1 ||
+      window.location.pathname.indexOf('introduction') > -1) {
       // do nothing on the logout-succcess page
 
     } else if (window.location.pathname.indexOf('d2l-callback') === -1 && window.location.pathname.indexOf('guest-callback') === -1) {
