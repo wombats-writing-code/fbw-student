@@ -13,6 +13,7 @@ import GuestCallbackRoute from './GuestCallback'
 
 import LogOutSuccessRoute from './LogOutSuccess'
 import GuideRoute from './Guide'
+import IntroductionRoute from './Introduction'
 
 
 export const createRoutes = (store) => {
@@ -30,6 +31,7 @@ export const createRoutes = (store) => {
       GuestCallbackRoute(store),
       LogOutSuccessRoute(store),
       GuideRoute(store),
+      IntroductionRoute(store),
       // CounterRoute(store),      // came with boilerplate, for reference only
 
       {
