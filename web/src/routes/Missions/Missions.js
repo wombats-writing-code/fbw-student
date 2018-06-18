@@ -62,7 +62,7 @@ class Missions extends Component {
             <div className="missions-list__item__body" style={missionStatus === 'over' ? missionOverStyle : null}>
               <p className="row-title mission-name">
                 {mission.displayName}
-                {mission.description ? ' | ' + mission.description : null}
+                {mission.description ? ' -- ' + mission.description : null}
               </p>
               <p className="row-subtitle mission-datetime" >
                 <span className="">{moment(mission.startTime).format('ddd, MMM D [at] h:mm a')}</span>
