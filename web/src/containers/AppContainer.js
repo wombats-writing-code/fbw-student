@@ -20,7 +20,9 @@ class AppContainer extends Component {
       window.location.pathname.indexOf('introduction') > -1) {
       // do nothing on the logout-succcess page
 
-    } else if (window.location.pathname.indexOf('d2l-callback') === -1 && window.location.pathname.indexOf('guest-callback') === -1) {
+    } else if (window.location.pathname.indexOf('d2l-callback') === -1 &&
+        window.location.pathname.indexOf('guest-callback') === -1 &&
+        window.location.pathname.indexOf('register') === -1) {
       // if we're not login, need to redirect to login
       if (!isLoggedIn(state)) browserHistory.push('/login');
 
