@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@wombats-writing-code/fbw-platform-common@5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@wombats-writing-code/fbw-platform-common/-/fbw-platform-common-5.1.0.tgz#376d363bbf57679ab505b76ad42f55abbc769cb8"
+"@wombats-writing-code/fbw-platform-common@5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@wombats-writing-code/fbw-platform-common/-/fbw-platform-common-5.1.1.tgz#f7f592a45bb0c1a4485ca76af9f5d58e77d4dc9f"
   dependencies:
     axios "^0.15.2"
     babel-core "^6.1.21"
