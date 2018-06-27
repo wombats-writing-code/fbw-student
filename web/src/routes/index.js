@@ -6,6 +6,7 @@ import Home from './Home'
 // import CounterRoute from './Counter'
 
 import LoginRoute from './Login'
+import RegisterRoute from './Register'
 import Mission from './Mission'
 import MissionsRoute from './Missions'
 import D2LCallbackRoute from './D2LCallback'
@@ -26,6 +27,7 @@ export const createRoutes = (store) => {
     indexRoute  : Home,
     childRoutes : [
       LoginRoute(store),
+      RegisterRoute(store),
       MissionsRoute(store),
       D2LCallbackRoute(store),
       GuestCallbackRoute(store),
