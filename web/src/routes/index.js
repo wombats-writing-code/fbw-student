@@ -7,6 +7,8 @@ import Home from './Home'
 
 import LoginRoute from './Login'
 import RegisterRoute from './Register'
+import ResetPasswordRoute from './ResetPassword'
+import SetNewPassword from './SetNewPassword'
 import Mission from './Mission'
 import MissionsRoute from './Missions'
 import D2LCallbackRoute from './D2LCallback'
@@ -28,6 +30,7 @@ export const createRoutes = (store) => {
     childRoutes : [
       LoginRoute(store),
       RegisterRoute(store),
+      ResetPasswordRoute(store),
       MissionsRoute(store),
       D2LCallbackRoute(store),
       GuestCallbackRoute(store),
@@ -39,6 +42,9 @@ export const createRoutes = (store) => {
       {
         path: '/missions/:missionName',
         component: Mission,
+      }, {
+        path: '/set-password/:userId',
+        component: SetNewPassword
       }
 
     ]

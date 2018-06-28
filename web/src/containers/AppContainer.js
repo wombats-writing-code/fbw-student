@@ -22,7 +22,9 @@ class AppContainer extends Component {
 
     } else if (window.location.pathname.indexOf('d2l-callback') === -1 &&
         window.location.pathname.indexOf('guest-callback') === -1 &&
-        window.location.pathname.indexOf('register') === -1) {
+        window.location.pathname.indexOf('register') === -1 &&
+        window.location.pathname.indexOf('reset-password') === -1 &&
+      window.location.pathname.indexOf('set-password') === -1) {
       // if we're not login, need to redirect to login
       if (!isLoggedIn(state)) browserHistory.push('/login');
 
