@@ -6,7 +6,13 @@ import './LogOutSuccess.scss'
 
 class LogOutSuccess extends Component {
 
-  render() {
+  componentDidMount () {
+    if (this.props.isVisitor) {
+      browserHistory.push('/login')
+    }
+  }
+
+  render () {
     return (
       <DocumentTitle title="Logout">
         <div className="logout-success flex-container justify-center align-center">

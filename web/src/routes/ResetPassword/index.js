@@ -1,9 +1,9 @@
-// import LogOutSuccessContainer from '@wombats-writing-code/fbw-platform-common/components/d2l-callback/LogOutSuccessContainer'
-import LogOutSuccess from './LogOutSuccess'
-// const LogOutSuccess = LogOutSuccessContainer(LogOutSuccessComponent, credentials);
+import ResetPasswordComponent from '@wombats-writing-code/fbw-platform-common/components/reset-password/web/ResetPassword';
+import ResetPasswordContainer from '@wombats-writing-code/fbw-platform-common/components/reset-password/ResetPasswordContainer'
+const ResetPassword = ResetPasswordContainer(ResetPasswordComponent)
 
 export default (store) => ({
-  path : 'logout-success',
+  path : 'reset-password',
   /*  Async getComponent is only invoked when route matches   */
   getComponent (nextState, cb) {
     /*  Webpack - use 'require.ensure' to create a split point
@@ -11,10 +11,11 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
+
       /*  Return getComponent   */
-      cb(null, LogOutSuccess)
+      cb(null, ResetPassword)
 
     /* Webpack named bundle   */
-    }, 'logout-success')
+  }, 'reset-password')
   }
 })
