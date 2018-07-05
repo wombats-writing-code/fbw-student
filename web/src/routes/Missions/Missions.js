@@ -53,6 +53,13 @@ class Missions extends Component {
 
     let activeStyle = mission === this.props.currentMission ? 'isSelected' : null;
 
+    // append "Attempt 1" to PHASE_I_MISSION_TYPE to match updated wording
+    let missionName = mission.displayName;
+
+    if (mission.type === missionConfig.PHASE_I_MISSION_TYPE) {
+      missionName += ' Attempt 1'
+    }
+
     return (
       <li className={`missions-list__item ${activeStyle}`} key={sectionId} onClick={() => this._onSelectMission(mission)}>
         <button className="clickable-row__button" >
@@ -61,7 +68,7 @@ class Missions extends Component {
 
             <div className="missions-list__item__body" style={missionStatus === 'over' ? missionOverStyle : null}>
               <p className="row-title mission-name">
-                {mission.displayName}
+                {missionName}
                 {mission.description ? ' -- ' + mission.description : null}
               </p>
               <p className="row-subtitle mission-datetime" >
