@@ -8,6 +8,7 @@ import Home from './Home'
 import LoginRoute from './Login'
 import RegisterRoute from './Register'
 import ResetPasswordRoute from './ResetPassword'
+import ResendVerificationEmailRoute from './ResendVerificationEmail'
 import SetNewPassword from './SetNewPassword'
 import Mission from './Mission'
 import MissionsRoute from './Missions'
@@ -31,6 +32,7 @@ export const createRoutes = (store) => {
       LoginRoute(store),
       RegisterRoute(store),
       ResetPasswordRoute(store),
+      ResendVerificationEmailRoute(store),
       MissionsRoute(store),
       D2LCallbackRoute(store),
       GuestCallbackRoute(store),

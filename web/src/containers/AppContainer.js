@@ -24,6 +24,7 @@ class AppContainer extends Component {
         window.location.pathname.indexOf('guest-callback') === -1 &&
         window.location.pathname.indexOf('register') === -1 &&
         window.location.pathname.indexOf('reset-password') === -1 &&
+        window.location.pathname.indexOf('resend-verification-email') === -1 &&
       window.location.pathname.indexOf('set-password') === -1) {
       // if we're not login, need to redirect to login
       if (!isLoggedIn(state)) browserHistory.push('/login');
